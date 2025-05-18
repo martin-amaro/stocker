@@ -1,0 +1,39 @@
+/* Fuente estática - Regular */
+@font-face {
+    font-family: 'SquareSansDisplay';
+    src: url('../fonts/SquareSansDisplay-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Fuente estática - Medium */
+@font-face {
+    font-family: 'SquareSansText';
+    src: url('../fonts/SquareSansText-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* Fuente variable - Display */
+@font-face {
+    font-family: 'SquareSansDisplayVF';
+    src: url('../fonts/SquareSansDisplay-VF.woff2') format('woff2');
+    font-weight: 100 900; /* Rango de pesos si es una fuente variable */
+    font-style: normal;
+}
+
+/* Fuente variable - Text */
+@font-face {
+    font-family: 'SquareSansTextVF';
+    src: url('../fonts/SquareSansText-VF.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+/* Fuente variable - Upright */
+@font-face {
+    font-family: 'SquareSansTextUprightVF';
+    src: url('../fonts/SquareSansText-Upright-VF.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+}
