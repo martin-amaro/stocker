@@ -56,7 +56,7 @@ export const Header = () => {
 
                 <button
                     onClick={() => setMenuOpen(!menuOpen)}
-                    className={"lg:hidden z-[10001] w-10 h-10 flex items-center justify-center relative "+ (menuOpen ? 'active' : '')}
+                    className={"lg:hidden z-[10001] w-10 h-10 flex items-center justify-center relative px-1 "+ (menuOpen ? 'active' : '')}
                     id="menuToggle"
                     aria-label="Toggle menu"
                     aria-expanded={menuOpen}

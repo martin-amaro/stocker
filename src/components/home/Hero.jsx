@@ -4,12 +4,12 @@ import introVideo from '../../assets/videos/intro2.mp4'
 export const Hero = () => {
     return (
         <div className="flex flex-col w-full relative overflow-hidden sm:flex-row sm:h-[70vh]">
-            <div className="hidden sm:block absolute inset-0 bg-black/70 z-[1]"/>
-            <div className="hidden sm:block absolute bottom-0 left-0 w-full h-10  z-[1]" />
+            <div className="hidden sm:block absolute inset-0 bg-black/70 z-[1]"></div>
+            <div className="hidden sm:block absolute bottom-0 left-0 w-full h-10  z-[1]"></div>
 
-            <div className="flex w-full h-full z-0 order-1 overflow-hidden sm:absolute">
+            <div className="flex w-full h-full p-4 sm:p-0 z-0 order-1 overflow-hidden sm:absolute">
                 <video
-                    className="rounded-[10px] m-4 w-full h-full object-cover sm:rounded-none sm:m-0"
+                    className="rounded-[10px] w-full h-full object-cover sm:rounded-none sm:m-0"
                     src={introVideo}
                     poster="assets/images/hero.png"
                     autoPlay
