@@ -1,7 +1,5 @@
 import React from 'react'
 import introVideo from '../../assets/videos/intro2.mp4'
-import reactLogo from '../../assets/react.svg'
-import { Assets } from './../Assets';
 
 export const Hero = () => {
     return (

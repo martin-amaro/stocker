@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const Img = ({src}) => {
+export const Img = ({src, className}) => {
   return (
-    <img src={"../src/assets/" + src}/>
+    <img className={className} src={"../src/assets/" + src}/>
   )
 }

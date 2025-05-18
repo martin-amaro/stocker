@@ -2,6 +2,10 @@
 
 @import "tailwindcss/preflight";
 @import "tailwindcss";
+@import url("styles/animations.css");
+
+
+
 
 @theme {
   --color-primary: #328af1;
@@ -10,7 +14,21 @@
   --color-graysec: #F2F5FA;
   --font-inter: 'Inter', sans-serif;
   --text-tiny: 0.9rem;
+  --animate-scrolling: scrolling var(--marquee-animation-duration) linear infinite;
+
+   @keyframes scrolling {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(calc(-1 * (var(--marquee-element-width) + var(--marquee-gap)) * var(--marquee-elements)));
+        }
+    }
+  
+
 }
+
 
 .header-link {
   @apply relative py-4 px-3 transition-all duration-300 text-neutral-900 hover:text-blue-400 font-medium /*text-tiny font-inter*/;
@@ -118,5 +136,6 @@ body {
 } */
 
 .btn-main {
-  @apply bg-[#6559ff] text-white font-medium text-sm px-4 py-2.5 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50 transition duration-200 ease-in-out;
+  @apply bg-[#6559ff] text-white font-medium text-sm px-4 py-2.5 rounded-lg shadow-md hover:bg-blue-700 transition duration-200 ease-in-out;
 }
+
