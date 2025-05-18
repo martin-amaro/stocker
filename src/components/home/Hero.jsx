@@ -1,18 +1,35 @@
 import React from 'react'
 import introVideo from '../../assets/videos/intro2.mp4'
 import reactLogo from '../../assets/react.svg'
+import { Assets } from './../Assets';
 
 export const Hero = () => {
     return (
-        <div className="hero-section">
-            <div className="image-container">
-                    <video className="parallax" src={introVideo} poster="assets/images/hero.png" autoPlay loop muted></video>
+        <div className="flex flex-col w-full relative overflow-hidden sm:flex-row sm:h-[70vh]">
+            <div className="hidden sm:block absolute inset-0 bg-black/70 z-[1]"/>
+            <div className="hidden sm:block absolute bottom-0 left-0 w-full h-10  z-[1]" />
+
+            <div className="flex w-full h-full z-0 order-1 overflow-hidden sm:absolute">
+                <video
+                    className="rounded-[10px] m-4 w-full h-full object-cover sm:rounded-none sm:m-0"
+                    src={introVideo}
+                    poster="assets/images/hero.png"
+                    autoPlay
+                    loop
+                    muted
+                />
 
             </div>
-            <div className="info_container">
-                <h2 className="info_container__title">Optimiza tu Inventario,<br/>Maximiza tu <span>Negocio</span></h2>
-                <p className="info_container__desc">Gestión de stock eficiente, precisa y en tiempo real. </p>
-                <button className="btn-main">Regístrate gratis</button>
+
+            <div className="relative p-8 rounded-md z-[2] order-0 text-black sm:my-auto sm:text-[#f0eded] lg:mx-24 lg:w-[40%]">
+                <h2 className="uppercase mb-4 text-2xl sm:text-5xl font-bold leading-tight">
+                    Optimiza tu Inventario,<br />
+                    Maximiza tu <span className="text-[#6559ff]">Negocio</span>
+                </h2>
+                <p className="text-[1.12rem]">Gestión de stock eficiente, precisa y en tiempo real.</p>
+                <button className="btn-main">
+                    Regístrate gratis
+                </button>
             </div>
         </div>
     )

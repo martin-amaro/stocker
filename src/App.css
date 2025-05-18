@@ -3,6 +3,15 @@
 @import "tailwindcss/preflight";
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #328af1;
+  --color-muted: #64748B;
+  --color-default: #222222;
+  --color-graysec: #F2F5FA;
+  --font-inter: 'Inter', sans-serif;
+  --text-tiny: 0.9rem;
+}
+
 .header-link {
   @apply relative py-4 px-3 transition-all duration-300 text-neutral-900 hover:text-blue-400 font-medium /*text-tiny font-inter*/;
 }
@@ -85,4 +94,29 @@
 
 .menu-toggle.active:hover > div {
   transform: rotate(225deg);
+}
+
+
+body {
+  font-family: 'SquareSansTextVF', 'Consolas';
+}
+
+/* {
+  margin: 1.5rem 0;
+    background-color: #6559ff;
+    border-color: transparent;
+    color: #fff;
+    padding: .6666666667rem 1rem;
+    border-radius: .75rem;
+    font-size: clamp(12px, 16px, 140px);
+    min-height: 3rem;
+    min-width: 3rem;
+    font-weight: 500;
+    font-family: var(--font-text-vf);
+    transition: background-color .2s;
+    cursor: pointer;
+} */
+
+.btn-main {
+  @apply bg-[#6559ff] text-white font-medium text-sm px-4 py-2.5 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50 transition duration-200 ease-in-out;
 }

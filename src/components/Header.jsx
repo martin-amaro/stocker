@@ -13,7 +13,7 @@ export const Header = () => {
     }, [menuOpen]);
 
     return (
-        <header className="w-full bg-primary border-b border-red-600">
+        <header className="w-full bg-white border-b py-2 lg:py-0  border-gray-300">
             <div className="w-full mx-auto flex justify-center items-center px-3 py-2 md:px-12 max-w-[1900px]">
                 <div className="flex items-center w-full gap-10">
 
@@ -66,10 +66,12 @@ export const Header = () => {
 
                 {/* Nav Menu Mobile */}
                 <nav
-                    className={`fixed inset-0 bg-white flex flex-col items-center mt-[58px] z-[1000] lg:hidden transform transition-transform duration-400 ${menuOpen ? 'translate-x-0' : 'translate-x-full'
-                        }`}
+                    className=
+                        {`fixed inset-0 bg-white flexflex-col items-center mt-20
+                        z-[1000] lg:hidden transform transition-transform
+                        duration-400 ${menuOpen ? 'translate-x-0' : 'translate-x-full' }`}
                 >
-                    <ul class="w-full my-6 flex flex-col text-base font-medium text-gray-800">
+                    <ul class="w-full flex flex-col text-base font-medium text-gray-800">
                         <li><a href="#" class="header-mobile-link">Rutas de Aprendizaje</a></li>
                         <li><a href="#" class="header-mobile-link">Certificaciones</a></li>
                         <li><a href="#" class="header-mobile-link">Mentores</a></li>
