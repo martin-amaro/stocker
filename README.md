@@ -1,12 +1,12 @@
-# **Stockering**
+# **Stocker**
 
 ## **Descripción**
 
-¡Bienvenido al repositorio de **Stockering**! Este proyecto está destinado a ser una aplicación de gestión de inventarios diseñada para adaptarse a las necesidades de diversos tipos de negocios. Ya sea que estés en una tienda, una empresa de alto flujo, una obra de construcción, o cualquier otro tipo de actividad que requiera una administración exacta de productos o materiales, **Stockering** te ofrece una solución integral.
+¡Bienvenido al repositorio de **Stocker**! Este proyecto está destinado a ser una aplicación de gestión de inventarios diseñada para adaptarse a las necesidades de diversos tipos de negocios. Ya sea que estés en una tienda, una empresa de alto flujo, una obra de construcción, o cualquier otro tipo de actividad que requiera una administración exacta de productos o materiales, **Stocker** te ofrece una solución integral.
 
-La aplicación permite organizar los inventarios de manera eficiente, gestionar los gastos, y controlar la entrada de cada producto o material, todo de forma sencilla y clara. Con el objetivo de facilitar la vida de los administradores y dueños de negocios, **Stockering** hace que la gestión de inventarios sea más rápida y precisa.
+La aplicación permite organizar los inventarios de manera eficiente, gestionar los gastos, y controlar la entrada de cada producto o material, todo de forma sencilla y clara. Con el objetivo de facilitar la vida de los administradores y dueños de negocios, **Stocker** hace que la gestión de inventarios sea más rápida y precisa.
 
-Este proyecto está en constante desarrollo, y por el momento, se encuentra en las primeras etapas, con una estructura básica de HTML, CSS y JAVA.
+Este proyecto está en constante desarrollo, y por el momento, se encuentra en las primeras etapas, con una estructura básica de React, TailwindCSS y JavaScript.
 
 ## **Características**
 
@@ -20,9 +20,10 @@ Este proyecto está en constante desarrollo, y por el momento, se encuentra en l
 Este proyecto está siendo desarrollado con las siguientes tecnologías:
 
 - **JavaScript**: Para la lógica del lado del cliente.
-- **Node.js**: Para el desarrollo del backend y la integración con el servidor.
-- **Vite**: Para un desarrollo rápido y eficiente con un entorno de construcción optimizado.
-- **Java**: En las primeras fases del proyecto, utilizado para manejar algunas funcionalidades clave.
+- **React**: Para construir y estructurar la interfaz de usuario de manera eficiente.
+- **TailwindCSS**: Para aplicar estilos de forma rápida y flexible mediante clases utilitarias.
+- **Vite**: Como entorno de desarrollo moderno y optimizado, que permite una carga más rápida y una mejor experiencia durante el desarrollo.
+
 
 ## **Instalación**
 
@@ -30,12 +31,12 @@ Para instalar y ejecutar el proyecto en tu máquina local, sigue estos pasos:
 
 1. **Clona el repositorio**:
     ```bash
-    git clone https://github.com/usuario/Stockering.git
+    git clone https://github.com/martin-amaro/Stocker.git
     ```
 
 2. **Accede a la carpeta del proyecto**:
     ```bash
-    cd Stockering
+    cd Stocker
     ```
 
 3. **Instala las dependencias**:
@@ -45,14 +46,14 @@ Para instalar y ejecutar el proyecto en tu máquina local, sigue estos pasos:
 
 4. **Inicia el proyecto**:
     ```bash
-    npm start
+    npm run dev
     ```
 
 Por el momento, este es el proceso básico para ejecutar el proyecto en tu entorno local.
 
 ## **Uso**
 
-El proyecto está en sus primeras fases y actualmente solo cuenta con una estructura básica de HTML, CSS y JAVA. En las futuras actualizaciones, podrás acceder a funcionalidades completas para la gestión de inventarios, gastos y productos.
+El proyecto está en sus primeras fases y actualmente solo cuenta con una estructura básica. En las futuras actualizaciones, podrás acceder a funcionalidades completas para la gestión de inventarios, gastos y productos.
 
 ## **Autores y Créditos**
 
@@ -63,7 +64,6 @@ Este proyecto ha sido desarrollado por:
 - **Daniel Muñoz**
 
 El proyecto sigue en desarrollo, por lo que cualquier colaboración o sugerencia es más que bienvenida.
-
 
 ## **Licencia**
 
