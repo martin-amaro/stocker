@@ -42,15 +42,20 @@ export const FAQ = () => {
 
     return (
         <section className="my-24 mx-auto max-w-limit">
-            <div className="w-full flex justify-center my-12 ">
-                <h2 className='section-title text-center'>Preguntas Frecuentes</h2>
+
+            <div className="w-full flex flex-col items-center justify-center my-12 ">
+                <span class="inline-block rounded-full bg-indigo-100 text-indigo-700 text-sm font-semibold px-4 py-1 my-2 uppercase tracking-wide">
+                    Preguntas Frecuentes
+                </span>
+
+                <h2 className='section-title text-center'>Todo lo que necesitas saber</h2>
             </div>
             <div className="flex flex-col w-full mx-auto px-3 lg:flex-row lg:w-[90%] lg:p-8 gap-8 lg:gap-0">
                 <div className="w-full overflow-hidden lg:w-[40%]">
                     <Img
-                    src="images/faq.jpg"
-                    alt=""
-                    className="rounded-lg w-full h-[180px] object-cover lg:object-none lg:h-auto lg:w-auto"
+                        src="images/faq.jpg"
+                        alt=""
+                        className="rounded-lg w-full h-[180px] object-cover lg:object-none lg:h-auto lg:w-auto"
                     />
                 </div>
                 <div className="flex flex-col items-center gap-[10px] w-full px-0 md:px-20 lg:w-[60%]">
@@ -67,7 +72,7 @@ export const FAQ = () => {
                             </button>
                             <div className={`faq-content grid transition-[grid-template-rows] duration-300 ease-in-out px-6 border-t border-t-[#878787] ${activeIndex === index ? 'active' : ''}`}>
                                 <div className="faq-content__ov overflow-hidden">
-                                    <p className='text-[#878787] my-4 text-base md:text-md leading-snug'>{faq.answer}</p>
+                                    <p className='text-neutral-500 my-4 text-base md:text-md leading-snug'>{faq.answer}</p>
                                 </div>
                             </div>
                         </div>

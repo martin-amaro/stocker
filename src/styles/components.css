@@ -81,6 +81,11 @@
 }
 
 .faq-title {
+
+    &.active {
+        @apply bg-neutral-100;
+
+    }
     &.active .fal {
         @apply rotate-[135deg];
     }
@@ -88,9 +93,10 @@
 
 
 .faq-content {
-        grid-template-rows: 0fr;
+    grid-template-rows: 0fr;
     &.active {
         grid-template-rows: 1fr;
+
     }
 }
 
