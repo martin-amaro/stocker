@@ -3,14 +3,16 @@ import { Img } from '../Img'
 
 export const Features = () => {
     return (
-        <section className="feature-section">
-            <div className="feature-section__info">
-                <h2>Todo tu trabajo<br/>en un solo lugar</h2>
-                <p>Digitalice cada elemento de su operación y encuentre áreas de mejora en cada paso del camino.</p>
-                <button className="btn-main">Explora la plataforma</button>
+        <section className="relative mt-10 flex flex-col before:absolute before:inset-0 before:z-[-1] before:bg-gradient-to-b before:from-white before:via-[#f3f6fb] before:to-[#f3f6fb]">
+            <div className="mx-auto flex flex-col items-center justify-center px-8 mb-12 text-center lg:basis-5/12 lg:px-12 lg:pt-12">
+                <h2 className="section-title">Todo tu trabajo<br/>en un solo lugar</h2>
+                <p className="mt-4 font-normal text-[1.4rem] leading-8">
+                    Digitalice cada elemento de su operación y encuentre áreas de mejora en cada paso del camino.
+                </p>
+                <button className="btn-main mt-6">Explora la plataforma</button>
             </div>
-            <div className="feature-section__img">
-                <Img src="images/app-dashboard.webp" alt=""/>
+            <div className="hidden h-[40vh] min-w-0 flex-grow-0 flex-shrink-0 px-8 justify-center lg:flex">
+                <Img src="images/app-dashboard.webp" alt="" />
             </div>
         </section>
     )

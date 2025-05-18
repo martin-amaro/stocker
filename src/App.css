@@ -13,9 +13,11 @@
   --color-default: #222222;
   --color-graysec: #F2F5FA;
   --font-inter: 'Inter', sans-serif;
+  --font-main: 'SquareSansText', sans-serif;
+  --font-normal: 'SquareSansTextVF', sans-serif;
   --text-tiny: 0.9rem;
   --animate-scrolling: scrolling var(--marquee-animation-duration) linear infinite;
-
+  --spacing-limit: 1900px;
    @keyframes scrolling {
         0% {
             transform: translateX(0);
@@ -31,11 +33,11 @@
 
 
 .header-link {
-  @apply relative py-4 px-3 transition-all duration-300 text-neutral-900 hover:text-blue-400 font-medium /*text-tiny font-inter*/;
+  @apply relative py-4 px-3 transition-all duration-300 text-neutral-900 hover:text-black font-medium /*text-tiny font-inter*/;
 }
 
 .header-link::after {
-  @apply content-[''] absolute bottom-2 left-3 w-0 h-[2px] bg-blue-400 transition-all duration-300;
+  @apply content-[''] absolute bottom-2 left-3 w-0 h-[2px] bg-black transition-all duration-300;
 }
 
 .header-link:hover::after {
@@ -95,25 +97,14 @@
 #menuToggle.active:hover>div {
     transform: rotate(225deg);
 }
-/* .menu-toggle.active ~ .menu {
-    pointer-events: auto;
-    visibility: visible;
-  } */
-
-/* .menu-toggle.active ~ .menu > div {
-    transform: scale(1);
-    transition-duration: 0.75s;
-  }
-
-  .menu-toggle.active ~ .menu > div > div {
-    opacity: 1;
-    transition: opacity 0.4s ease 0.4s;
-  } */
 
 .menu-toggle.active:hover > div {
   transform: rotate(225deg);
 }
 
+.section-title {
+  @apply font-main font-bold text-5xl;
+}
 
 body {
   font-family: 'SquareSansTextVF', 'Consolas';
@@ -136,6 +127,20 @@ body {
 } */
 
 .btn-main {
-  @apply bg-[#6559ff] text-white font-medium text-sm px-4 py-2.5 rounded-lg shadow-md hover:bg-blue-700 transition duration-200 ease-in-out;
+  @apply cursor-pointer my-6 bg-[#6559ff] text-white font-medium text-base px-4 py-2.5 rounded-lg shadow-md hover:bg-blue-700 transition duration-200 ease-in-out;
 }
 
+
+.faq-title {
+    &.active .fal {
+        @apply rotate-[135deg];
+    }
+}
+
+
+.faq-content {
+        grid-template-rows: 0fr;
+    &.active {
+        grid-template-rows: 1fr;
+    }
+}

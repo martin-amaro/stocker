@@ -132,31 +132,6 @@ a, button {
     }
 }
 
-.image_container,
-.info_container {
-    @media screen and (min-width: 600px) {}
-}
-
-.image_container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-
-    img {
-        width: 50%;
-    }
-
-    @media screen and (min-width: 600px) {
-        width: 60%;
-        order: 2;
-
-        img {
-            width: 100%;
-        }
-    }
-}
-
 
 .main-btn {
     width: 100%;
@@ -206,71 +181,6 @@ a, button {
 }
 
 
-.feature-section {
-    margin-top: 2.5rem;
-    display: flex;
-    position: relative;
-    flex-direction: column;
-
-    &::after {
-        content: "";
-        background: linear-gradient(180deg, #fff 0, #f3f6fb 50%);
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-    }
-}
-
-
-.feature-section__info {
-    margin: auto ;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    padding-bottom: 0;
-    text-align: center;
-
-    @media screen and (min-width: 992px) {
-        padding: 3rem;
-        flex-basis: 40.666667%;
-    }
-    
-    
-    
-    h2 {
-        font-family: var(--font-text);
-        font-size: 3rem;
-    }
-    
-    p {
-        margin-top: 1rem;
-        font-family: var(--font-text-vf);
-        font-size: 1.4rem;
-        line-height: 2rem;
-    }
-}
-
-
-.feature-section__img {
-    display: none;
-    
-    flex-grow: 0;
-    flex-shrink: 0;
-    padding: 0 2rem;
-    min-width: 0;
-
-    height: 40vh;
-
-    @media screen and (min-width: 992px) {
-        display: flex;
-        justify-content: center;
-    }
-}
 
 .material-symbols-outlined {
   font-variation-settings:
@@ -281,7 +191,7 @@ a, button {
 }
 
 
-.btn-main {
+/* .btn-main {
     margin: 1.5rem 0;
     background-color: #6559ff;
     border-color: transparent;
@@ -300,151 +210,6 @@ a, button {
         background-color: #4740d4;
     }
 
-}
+} */
 
-
-.video-section {
-    width: 100%;
-    overflow: hidden;
-
-    video {
-        width: 100%;
-        height: auto;
-    }
-
-}
-
-.feature-w-section {
-    display: flex;
-    margin: 2rem 0;
-}
-
-.faq-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: auto;
-    padding: 0 .8rem;
-
-    @media (min-width: 1024px) {
-        padding: 2rem;
-        
-        width: 90%;
-        flex-direction: row;
-    }
-}
-
-.faq-media {
-    width: 100%;
-    overflow: hidden;
-
-    @media (min-width: 1024px) {
-        width: 40%;
-    }
-
-    img {
-        border-radius: 8px;
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-
-        @media (min-width: 1024px) {
-            object-fit: none;
-            height: auto;
-            width: auto;
-        }
-
-    }
-}
-
-.faq-list {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-    gap: 10px;
-    /* padding: 1rem; */
-    width: 100%;
-
-    @media (min-width: 768px) {
-        padding: 1rem 5rem;
-    }
-
-    @media (min-width: 1024px) {
-        width: 60%;
-        max-width: 1600px;
-    }
-}
-
-
-.faq-item {
-    width: 100%;
-    user-select: none;
-
-
-    .faq-title {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 20px;
-        font-size: 18px;
-        /* background-color: #303030; */
-        background-color: #FFF;
-        color: #303030;
-
-        border: 1px solid #303030;
-        border: 0px;
-        cursor: pointer;
-        font-family: var(--font-ps);
-        text-align: left;
-    
-        @media (min-width: 1024px) {
-            font-size: 20px;
-        }
-
-        .fal{
-            transition: .3s;
-            transform: rotate(0deg);
-            fill: #303030;
-        }
-
-        &.active .fal {
-            transform: rotate(135deg);
-        }
-    }
-}
-
-
-
-.faq-content {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: .25s grid-template-rows cubic-bezier(0.4, 0, 0.2, 1);
-    /* background-color: #303030; */
-    border-top: 1px solid black;
-    border-top: 1px solid #878787;
-    font-size: 1.2rem;
-    
-    @media (min-width: 768px) {
-        font-size: 1rem;
-
-    }
-
-    padding: 0rem 1.5rem;
-
-    .faq-content__ov {
-        overflow: hidden;
-    }
-
-    &.active {
-        grid-template-rows: 1fr;
-        /* border-top: 2px solid #6559ff; */
-    }
-
-    p {
-        color: #878787;
-        margin: 1rem;
-    }
-}
 
