@@ -15,7 +15,11 @@
   --color-graysec: #F2F5FA;
   --font-inter: 'Inter', sans-serif;
   --font-main: 'SquareSansText', sans-serif;
-  --font-normal: 'SquareSansTextVF', sans-serif;
+  --font-display: 'SquareSansDisplayVF';
+  --font-a1: 'SquareSansDisplay';
+  --font-a3: 'SquareSansTextUprightVF';
+
+
   --text-tiny: 0.9rem;
   --animate-scrolling: scrolling var(--marquee-animation-duration) linear infinite;
   --spacing-limit: 1900px;
