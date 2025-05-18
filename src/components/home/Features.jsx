@@ -15,5 +15,6 @@ export const Features = () => {
                 <Img src="images/app-dashboard.webp" alt="" />
             </div>
         </section>
+        
     )
 }
