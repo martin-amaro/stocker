@@ -25,13 +25,10 @@ Nos comprometemos a hacer de este proyecto un espacio libre de discriminación y
 
 Si ves o experimentas algún comportamiento que va en contra de este código, por favor comunícalo. No lo ignores. Puedes reportarlo directamente a cualquiera de los autores del proyecto o dejar un mensaje privado si prefieres mantener tu identidad en reserva.
 
-
 ## Alcance
 
 Este código de conducta aplica tanto en los espacios del proyecto (como issues, pull requests, comentarios y chats), como en cualquier interacción fuera del repositorio siempre que esté relacionada con el proyecto.
 
 ---
 
-
-
-Gracias por ser parte de Stockering 
+Gracias por ser parte de Stocker.

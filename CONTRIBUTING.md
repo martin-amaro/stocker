@@ -1,71 +1,79 @@
-# Contributing to Tailwind Boilerplate
+# Contribuir al proyecto
 
-First off, thank you for considering contributing to our project. It's people like you that make our project better!
+¡Gracias por tu interés en contribuir a este proyecto! Apreciamos todas las contribuciones, ya sean reportes de errores, sugerencias, mejoras de código o documentación.
 
-The following is a set of guidelines for contributing to this project. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+## Requisitos previos
 
-## How Can I Contribute?
+Antes de comenzar, asegúrate de tener lo siguiente instalado:
 
-### Reporting Bugs
+- [ ] Git
+- [ ] Un editor de texto (recomendado: VSCode)
+- [ ] Haber leído el archivo README.md
 
-If you find a bug, please report it by opening an issue on our GitHub repository. Before doing so, please check if the issue has already been reported.
+## Cómo contribuir
 
-When you report a bug, please include:
+1. **Haz un fork del repositorio**  
+   Ve al repositorio principal y haz clic en el botón “Fork”.
 
-- A clear and descriptive title.
-- A detailed description of the problem.
-- Steps to reproduce the issue.
-- Any relevant screenshots or code snippets.
-- Information about your environment (e.g., browser version, operating system).
+2. **Clona tu fork localmente**
+   ```bash
+   git clone https://github.com/martin-amaro/stocker.git
+   ```
 
-### Suggesting Enhancements
+3. **Crea una nueva rama para tu cambio**
+   ```bash
+   git checkout -b nombre-de-tu-rama
+   ```
 
-If you have an idea for an enhancement or new feature, we would love to hear about it. Please open an issue on our GitHub repository and describe:
+4. **Realiza tus cambios y haz commits descriptivos usando la convención [Conventional Commits](https://www.conventionalcommits.org/)**
 
-- The enhancement or feature you are suggesting.
-- Why you think it would be useful.
-- Any relevant examples or mockups.
+    Ejemplos de mensajes de commit válidos:
+   ```bash
+   git commit -m "feat: agregar botón para compartir en redes sociales"
+   git commit -m "fix: corregir error al validar email"
+   git commit -m "docs: actualizar documentación de instalación"
+   git commit -m "refactor: simplificar lógica de autenticación"
+   git commit -m "test: agregar pruebas para el login"
+   git commit -m "chore: actualizar dependencias"
+   ```
 
-### Pull Requests
+   Esto ayuda a mantener un historial de cambios claro y facilita el versionado automático.
 
-If you are ready to start coding, follow these steps to submit a pull request:
+5. **Haz push a tu rama**
+   ```bash
+   git push origin nombre-de-tu-rama
+   ```
 
-1. Fork the repository.
-2. Create a new branch from `master` (e.g., `feature/my-new-feature`).
-3. Make your changes.
-4. Ensure your changes pass all tests and adhere to our coding standards.
-5. Commit your changes with a clear and descriptive message.
-6. Push your branch to your forked repository.
-7. Open a pull request against the `master` branch of our repository.
+6. **Abre un Pull Request (PR)**  
+   Desde tu repositorio en GitHub, haz clic en “Compare & pull request”.
 
-### Code Style
+## Reglas de estilo
 
-Please follow our coding standards and style guidelines:
+- Sigue la guía de estilo del proyecto.
+- Usa nombres de variables descriptivos.
+- Asegúrate de que tu código pase los linters y tests.
+- Documenta tus funciones si es necesario.
 
-- Use meaningful variable and function names.
-- Write comments to explain complex code.
-- Format your code consistently.
-- Ensure your code is well-tested.
+## Reportar errores
 
-### Documentation
+Si encuentras un bug, por favor crea un *issue* e incluye:
 
-If you make changes to the code, please update the documentation accordingly. This includes:
+- Pasos para reproducirlo
+- Comportamiento esperado vs. comportamiento actual
+- Capturas de pantalla o logs si aplica
 
-- Updating the README.md file if necessary.
-- Adding or updating comments in the code.
-- Providing examples or usage instructions if applicable.
+## Sugerencias y mejoras
 
-### Testing
+¡Nos encanta recibir nuevas ideas! Si tienes una propuesta:
 
-Before submitting your changes, make sure they pass all tests. If you add new functionality, please write tests to cover it. We use [testing framework] for our tests. To run the tests, use the following command:
+- Crea un *issue* titulado: `Sugerencia: [tu idea]`
+- Describe claramente tu propuesta y cómo beneficiaría al proyecto.
 
-```sh
-npm test
+## Código de conducta
 
-Code of Conduct
-This project adheres to the Contributor Covenant Code of Conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to @zexarcore.
+Por favor, lee nuestro [Código de Conducta](./CODE_OF_CONDUCT.md) para entender nuestras expectativas sobre el comportamiento en la comunidad.
 
-Thank You!
-Thank you for taking the time to read this document and for your interest in contributing to our project. We value your contributions and look forward to working with you!
+---
 
-If you have any questions or need further assistance, feel free to reach out to us at zexarcore.
+Gracias por hacer de este proyecto algo mejor 🙌  
+El equipo de mantenimiento
