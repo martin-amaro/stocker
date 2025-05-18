@@ -43,9 +43,9 @@ export const FAQ = () => {
     return (
         <section className="my-24 mx-auto max-w-limit">
             <div className="w-full flex justify-center my-12 ">
-                <h2 className='section-title'>Preguntas Frecuentes</h2>
+                <h2 className='section-title text-center'>Preguntas Frecuentes</h2>
             </div>
-            <div className="flex flex-col w-full mx-auto px-3 lg:flex-row lg:w-[90%] lg:p-8">
+            <div className="flex flex-col w-full mx-auto px-3 lg:flex-row lg:w-[90%] lg:p-8 gap-8 lg:gap-0">
                 <div className="w-full overflow-hidden lg:w-[40%]">
                     <Img
                     src="images/faq.jpg"

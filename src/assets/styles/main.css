@@ -1,5 +1,4 @@
 @import url('fonts.css');
-@import url('footer.css');
 @import url('quick.css');
 
 :root {
@@ -75,7 +74,7 @@ a, button {
     -webkit-tap-highlight-color: transparent;
 }
 
-.container {
+/* .container {
     width: 100%;
     margin: auto;
 
@@ -83,7 +82,7 @@ a, button {
         width: 80%;
 
     }
-}
+} */
 
 
 .content {
