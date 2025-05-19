@@ -24,11 +24,12 @@ export const Footer = () => {
             <h3 className="footer-title">Tipos de Negocios</h3>
             <ul className="flex flex-col gap-[0.7rem]">
                 <li><a href="#" className="footer-lnk">Restaurantes</a></li>
-                <li><a href="#" className="footer-lnk">Servicio Rápido</a></li>
+                <li><a href="#" className="footer-lnk">Transporte y Logística</a></li>
                 <li><a href="#" className="footer-lnk">Bars y Licorerías</a></li>
                 <li><a href="#" className="footer-lnk">Salón de Belleza</a></li>
                 <li><a href="#" className="footer-lnk">Barberías</a></li>
                 <li><a href="#" className="footer-lnk">Spa</a></li>
+                <li><a href="#" className="footer-lnk">Construcción</a></li>
                 <li><a href="#" className="footer-lnk">Franquicias</a></li>
             </ul>
           </div>
@@ -37,7 +38,7 @@ export const Footer = () => {
             <h3 className="footer-title">Recursos</h3>
             <ul className="flex flex-col gap-[0.7rem]">
               <li><a href="#" className="footer-lnk">Planes</a></li>
-              <li><a href="#" className="footer-lnk">¿Por qué Square?</a></li>
+              <li><a href="#" className="footer-lnk">¿Por qué {config.appName}?</a></li>
               <li><a href="#" className="footer-lnk">Testimonios</a></li>
               <li><a href="#" className="footer-lnk">Ventas</a></li>
               <li><a href="#" className="footer-lnk">Soporte Técnico</a></li>

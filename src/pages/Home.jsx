@@ -8,6 +8,8 @@ import { FAQ } from '../components/home/FAQ'
 import FeatureCards from '../components/home/FeatureCards'
 import { LastHook } from '../components/home/LastHook'
 import { Pricing } from '../components/home/Pricing'
+import { Testimonials } from '../components/home/Testimonials'
+import { MainTestimonial } from './../components/home/MainTestimonial';
 
 export const Home = () => {
   return (
@@ -18,6 +20,8 @@ export const Home = () => {
         <Partners />
         <Features />
         <FeatureCards />
+        <MainTestimonial />
+        <Testimonials />
         <FAQ />
         <LastHook />
       </main>
