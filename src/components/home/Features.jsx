@@ -1,5 +1,4 @@
 import React from 'react'
-import { Img } from '../Img'
 
 export const Features = () => {
     return (
@@ -12,7 +11,7 @@ export const Features = () => {
                 <button className="btn-main mt-6">Explora la plataforma</button>
             </div>
             <div className="hidden h-[40vh] min-w-0 flex-grow-0 flex-shrink-0 px-8 justify-center lg:flex">
-                <Img src="images/app-dashboard.webp" alt="" />
+                <img src="images/app-dashboard.webp" alt="" />
             </div>
         </section>
         

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Img } from '../Img';
 import { Badge } from '../Badge';
 
 export const FAQ = () => {
@@ -50,7 +49,7 @@ export const FAQ = () => {
             </div>
             <div className="flex flex-col w-full mx-auto px-3 lg:flex-row lg:w-[90%] lg:p-8 gap-8 lg:gap-0">
                 <div className="w-full overflow-hidden lg:w-[40%]">
-                    <Img
+                    <img
                         src="images/faq.jpg"
                         alt=""
                         className="rounded-lg w-full h-[180px] object-cover lg:object-none lg:h-auto lg:w-auto"

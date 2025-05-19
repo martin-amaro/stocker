@@ -1,5 +1,4 @@
 import React from 'react'
-import { Img } from '../Img'
 
 export const MainTestimonial = () => {
     return (
@@ -13,7 +12,7 @@ export const MainTestimonial = () => {
                     "Inventario, control y claridad como nunca antes. Lo que parecía complejo ahora es parte natural del día a día. Simplificó procesos sin que yo tuviera que cambiar la forma en que trabajo."
                 </p>
                 <div className="flex justify-center space-x-3">
-                    <Img src="images/testimonials/7.jpg" className="w-20 h-20 bg-center bg-cover rounded-md dark:bg-gray-500" />
+                    <img src="images/testimonials/7.jpg" className="w-20 h-20 bg-center bg-cover rounded-md dark:bg-gray-500" />
                     <div>
                         <p className="leading-tight">Mateo Henao</p>
                         <p className="text-sm leading-tight dark:text-gray-700">Gerente de Tostao</p>

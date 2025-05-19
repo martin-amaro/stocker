@@ -1,6 +1,5 @@
 import { CircleUserRound, MessageCircleQuestion, UserRound } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
-import { Img } from './Img';
 import image from '../assets/images/logo.svg';
 
 export const Header = () => {

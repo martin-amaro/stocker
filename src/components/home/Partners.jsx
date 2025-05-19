@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react'
-import { Img } from '../Img.jsx'
 
 export const Partners = () => {
 
@@ -52,7 +51,7 @@ export const Partners = () => {
             maxHeight: '100%',
           }}
         >
-          <Img
+          <img
             src={`images/partners/${name}`}
             className="w-full h-full object-scale-down grayscale"
           />

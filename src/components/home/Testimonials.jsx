@@ -1,5 +1,4 @@
 import React from 'react';
-import { Img } from './../Img';
 import config from '../../config';
 import { Badge } from '../Badge';
 
@@ -41,8 +40,7 @@ const TestimonialCard = ({ name, image, text }) => (
     <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
         <div className="w-full flex mb-4 items-center">
             <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                <Img src={image} alt={name} />
-
+                <img src={image} alt={name} />
             </div>
             <div className="flex-grow pl-3">
                 <h6 className="font-bold text-sm uppercase text-gray-600">{name}.</h6>
