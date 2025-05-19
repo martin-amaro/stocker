@@ -1,6 +1,9 @@
 # **Stocker**
 
-## **Descripción**
+![image](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![image](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+
+## Descripción
 
 ¡Bienvenido al repositorio de **Stocker**! Este proyecto está destinado a ser una aplicación de gestión de inventarios diseñada para adaptarse a las necesidades de diversos tipos de negocios. Ya sea que estés en una tienda, una empresa de alto flujo, una obra de construcción, o cualquier otro tipo de actividad que requiera una administración exacta de productos o materiales, **Stocker** te ofrece una solución integral.
 
@@ -8,7 +11,13 @@ La aplicación permite organizar los inventarios de manera eficiente, gestionar 
 
 Este proyecto está en constante desarrollo, y por el momento, se encuentra en las primeras etapas, con una estructura básica de React, TailwindCSS y JavaScript.
 
-## **Características**
+## Demo
+
+Puedes ver una demostración en vivo de la aplicación aquí (Sólo frontend):
+
+👉 [Demo de Stocker](https://martin-amaro.github.io/stocker/)
+
+## Características
 
 - **Gestión de inventarios personalizada**: Dependiendo de las necesidades específicas de cada cliente, la app permite acceder a diferentes tipos de inventarios.
 - **Gestión de gastos**: Lleva el control detallado de los gastos y la entrada de productos o materiales.
