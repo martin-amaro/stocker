@@ -7,6 +7,7 @@ import { Features } from '../components/home/Features'
 import { FAQ } from '../components/home/FAQ'
 import FeatureCards from '../components/home/FeatureCards'
 import { LastHook } from '../components/home/LastHook'
+import { Pricing } from '../components/home/Pricing'
 
 export const Home = () => {
   return (

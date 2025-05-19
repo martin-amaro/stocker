@@ -1,7 +1,7 @@
 import { CircleUserRound, MessageCircleQuestion, UserRound } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import { Img } from './Img';
-import image from '../../public/logo.svg';
+import image from '../assets/images/logo.svg';
 
 export const Header = () => {
 
@@ -75,13 +75,13 @@ export const Header = () => {
                         z-[1000] lg:hidden transform transition-transform
                         duration-400 ${menuOpen ? 'translate-x-0' : 'translate-x-full' }`}
                 >
-                    <ul class="w-full flex flex-col text-base font-medium text-gray-800">
-                        <li><a href="#" class="header-mobile-link">Rutas de Aprendizaje</a></li>
-                        <li><a href="#" class="header-mobile-link">Certificaciones</a></li>
-                        <li><a href="#" class="header-mobile-link">Mentores</a></li>
-                        <li><a href="#" class="header-mobile-link">Blog</a></li>
-                        <li><a href="#" class="header-mobile-link">Ingresar</a></li>
-                        <li><a href="#" class="header-mobile-link">Comienza Ahora</a></li>
+                    <ul className="w-full flex flex-col text-base font-medium text-gray-800">
+                        <li><a href="#" className="header-mobile-link">Rutas de Aprendizaje</a></li>
+                        <li><a href="#" className="header-mobile-link">Certificaciones</a></li>
+                        <li><a href="#" className="header-mobile-link">Mentores</a></li>
+                        <li><a href="#" className="header-mobile-link">Blog</a></li>
+                        <li><a href="#" className="header-mobile-link">Ingresar</a></li>
+                        <li><a href="#" className="header-mobile-link">Comienza Ahora</a></li>
                     </ul>
                 </nav>
 

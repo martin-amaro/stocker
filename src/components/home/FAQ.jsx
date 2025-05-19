@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Img } from '../Img';
+import { Badge } from '../Badge';
 
 export const FAQ = () => {
     const [activeIndex, setActiveIndex] = useState(0); // Primer item activo por defecto
@@ -44,10 +45,7 @@ export const FAQ = () => {
         <section className="my-24 mx-auto max-w-limit">
 
             <div className="w-full flex flex-col items-center justify-center my-12 ">
-                <span class="inline-block rounded-full bg-indigo-100 text-indigo-700 text-sm font-semibold px-4 py-1 my-2 uppercase tracking-wide">
-                    Preguntas Frecuentes
-                </span>
-
+                <Badge text="Preguntas Frecuentes"/>
                 <h2 className='section-title text-center'>Todo lo que necesitas saber</h2>
             </div>
             <div className="flex flex-col w-full mx-auto px-3 lg:flex-row lg:w-[90%] lg:p-8 gap-8 lg:gap-0">
