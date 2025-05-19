@@ -1,5 +1,6 @@
 import { ArrowDownWideNarrow, Rocket, ShieldCheck, Smartphone, Zap } from 'lucide-react'
 import React from 'react'
+import config from '../../config'
 
 export const LastHook = () => {
     return (
@@ -7,7 +8,7 @@ export const LastHook = () => {
             <h2 className="text-3xl md:text-5xl mb-12 font-bold font-display">
                 Impulsa la eficiencia en tu inventario
                 <br/>
-                con <span className='text-primary'>Stocker</span>.
+                con <span className='text-primary'>{config.appName}</span>.
             </h2>
 
             <div className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto mb-10">
@@ -33,7 +34,7 @@ export const LastHook = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 m-8">
                 <button className='btn-main m-0! px-6!'>Comenzar gratis</button>
                 <button className='btn-sec m-0! px-6!'>Solicitar demo</button>
             </div>

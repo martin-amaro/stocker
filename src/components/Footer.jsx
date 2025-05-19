@@ -1,6 +1,10 @@
 import React from 'react'
+import config from "../config";
 
 export const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
+
     return (
         <section className="bg-black flex flex-col p-8">
     <div className="flex flex-col w-[90%] max-w-[1400px] mx-auto ">
@@ -53,7 +57,7 @@ export const Footer = () => {
 
         <div className="w-full flex justify-between items-center mx-auto pt-8 border-t border-[rgba(128,128,128,0.35)]">
           <div className="flex items-center text-[#737373] text-sm">
-            <p className="text-[#737373] text-[13px]">© 2025 Ascord, Inc.</p>
+            <p className="text-[#737373] text-[13px]">© {currentYear} {config.appName}, Inc.</p>
           </div>
           <div className="flex gap-[2px] text-white">
             <a href="#" className=" p-1" title="Twitter">
