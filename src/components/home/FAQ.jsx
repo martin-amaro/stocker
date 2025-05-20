@@ -59,11 +59,11 @@ export const FAQ = () => {
                     {faqs.map((faq, index) => (
                         <div className="faq-item w-full select-none" key={index}>
                             <button
-                                className={`faq-title w-full flex justify-between items-center text-left px-5 py-3 text-lg lg:text-lg bg-white text-neutral-700 transition-all cursor-pointer ${activeIndex === index ? 'active' : ''}`}
+                                className={`faq-title w-full flex justify-between items-center text-left gap-2 px-5 py-3 text-lg lg:text-lg bg-white text-neutral-700 transition-all cursor-pointer ${activeIndex === index ? 'active' : ''}`}
                                 onClick={() => toggleFAQ(index)}
                             >
-                                {faq.question}
-                                <svg className="fal transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#303030">
+                                <span className='flex-1'>{faq.question}</span>
+                                <svg className="fal w-7 h-7 shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#303030">
                                     <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
                                 </svg>
                             </button>
