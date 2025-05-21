@@ -10,6 +10,8 @@ import { LastHook } from '../components/home/LastHook'
 import { Pricing } from '../components/home/Pricing'
 import { Testimonials } from '../components/home/Testimonials'
 import { MainTestimonial } from './../components/home/MainTestimonial';
+import { Heroless } from '../components/home/Heroless'
+import { Categories } from '../components/home/Categories'
 
 export const Home = () => {
   return (
@@ -21,11 +23,14 @@ export const Home = () => {
         <Features />
         <FeatureCards />
         <MainTestimonial />
+        <Heroless />
+        <Categories />
         <Testimonials />
         <FAQ />
         <LastHook />
       </main>
       <Footer></Footer>
+      
     </div>
   )
 }

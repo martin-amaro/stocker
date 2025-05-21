@@ -11,7 +11,7 @@ export const Hero = () => {
                 <video
                     className="rounded-[10px] w-full h-full object-cover sm:rounded-none sm:m-0"
                     src={introVideo}
-                    poster="assets/images/hero.png"
+                    poster="images/hero.png"
                     autoPlay
                     loop
                     muted
@@ -25,9 +25,9 @@ export const Hero = () => {
                     Maximiza tu <span className="text-[#6559ff]">Negocio</span>
                 </h2>
                 <p className="text-[1.12rem]">Gestión de stock eficiente, precisa y en tiempo real.</p>
-                <button className="btn-main">
-                    Regístrate gratis
-                </button>
+                <div className='flex gap-4'>
+                    <button className="btn-main"> Regístrate gratis </button>
+                </div>
             </div>
         </div>
     )
