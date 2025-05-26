@@ -62,3 +62,9 @@ a, button {
     }
 
 }
+
+input, button {
+    &:disabled {
+        @apply opacity-55 pointer-events-none;
+    }
+}

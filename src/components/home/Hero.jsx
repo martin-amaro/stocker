@@ -1,9 +1,10 @@
 import React from 'react'
 import introVideo from '../../assets/videos/intro2.mp4'
+import { Link } from 'react-router-dom'
 
 export const Hero = () => {
     return (
-        <div className="flex flex-col w-full relative overflow-hidden sm:flex-row sm:h-[70vh]">
+        <div className="flex flex-col w-full relative overflow-hidden sm:flex-row md:h-[50vh] lg:h-[70vh] min-h-[500px]">
             <div className="hidden sm:block absolute inset-0 bg-black/70 z-[1]"></div>
             <div className="hidden sm:block absolute bottom-0 left-0 w-full h-10  z-[1]"></div>
 
@@ -26,7 +27,7 @@ export const Hero = () => {
                 </h2>
                 <p className="text-[1.12rem]">Gestión de stock eficiente, precisa y en tiempo real.</p>
                 <div className='flex gap-4'>
-                    <button className="btn-main"> Regístrate gratis </button>
+                    <Link to='/login' className="btn-main"> Regístrate gratis </Link>
                 </div>
             </div>
         </div>

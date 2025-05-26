@@ -12,6 +12,8 @@ import { Testimonials } from '../components/home/Testimonials'
 import { MainTestimonial } from './../components/home/MainTestimonial';
 import { Heroless } from '../components/home/Heroless'
 import { Categories } from '../components/home/Categories'
+import { Auth } from './../components/auth/Auth';
+import { Guest } from './../components/auth/Guest';
 
 export const Home = () => {
   return (
@@ -24,6 +26,7 @@ export const Home = () => {
         <FeatureCards />
         <MainTestimonial />
         <Heroless />
+        
         <Categories />
         <Testimonials />
         <FAQ />
