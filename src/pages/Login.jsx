@@ -42,14 +42,14 @@ export const Login = () => {
         setServerError(null);
 
         try {
-            const response = await axios.post("http://localhost:8080/users", {
+            const response = await axios.post(`${config.backend}/users`, {
                 email,
                 password,
             });
 
             if (response.status === 201) {
                 // Si se creó exitosamente, logueamos
-                const loginResponse = await axios.post("http://localhost:8080/auth", {
+                const loginResponse = await axios.post(`${config.backend}/auth`, {
                     username: email,
                     password: password
                 });
