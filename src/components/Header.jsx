@@ -1,11 +1,10 @@
-import { CircleUserRound, MessageCircleQuestion, UserRound } from 'lucide-react';
+import { CircleUserRound, GraduationCap, MessageCircleQuestion, UserRound } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import image from '../assets/images/logo.svg';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 export const Header = ({ simple = false }) => {
-    console.log("Valor de simple:", simple);
     const [menuOpen, setMenuOpen] = useState(false);
     const { user, logout } = useAuth();
 
@@ -19,8 +18,8 @@ export const Header = ({ simple = false }) => {
 
     return (
         <header className="w-full bg-white border-b py-2 lg:py-0  border-gray-300">
-            <div className="w-full mx-auto flex justify-center items-center px-3 py-2 md:px-12 max-w-[1900px]">
-                <div className="flex items-center w-full gap-10">
+            <div className="w-full mx-auto flex justify-between items-center px-3 py-2 md:px-12 max-w-[1900px]">
+                <div className="flex items-center gap-10">
 
                     {/* Logo */}
                     <div>
@@ -46,52 +45,71 @@ export const Header = ({ simple = false }) => {
                 </div>
 
                 {/* Botones de acción Desktop */}
-                <div className="hidden lg:block">
+                <div className={!simple && "hidden lg:block"}>
                     <ul className='flex items-center gap-3'>
-                        {!simple && (
-                            <li>
-                                <Link className="header-link flex gap-2" to="/login">
-                                    <CircleUserRound />
-                                    Ingresar
-                                </Link>
-                            </li>
+                        {!simple ? (
+                            <>
+                                <li>
+                                    <Link className="header-link flex gap-2" to="/login">
+                                        <CircleUserRound />
+                                        Ingresar
+                                    </Link>
+                                </li>
+                                <li>
+                                    <a className="header-link flex gap-2" href="#">
+                                        <MessageCircleQuestion />
+                                        Soporte
+                                    </a>
+                                </li>
+                            </>
+
+                        ) : (
+                            <>
+                                <li>
+                                    <Link className="header-link flex gap-2" to="/login">
+                                        <GraduationCap />
+                                        Aprende más
+                                    </Link>
+                                </li>
+                            </>
                         )}
-                        <li>
-                            <a className="header-link flex gap-2" href="#">
-                                <MessageCircleQuestion />
-                                Soporte
-                            </a>
-                        </li>
+
 
                     </ul>
                 </div>
 
-                <button
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    className={"lg:hidden z-[10001] w-10 h-10 flex items-center justify-center relative px-1 " + (menuOpen ? 'active' : '')}
-                    id="menuToggle"
-                    aria-label="Toggle menu"
-                    aria-expanded={menuOpen}
-                >
-                    <div className=''></div>
-                </button>
 
                 {/* Nav Menu Mobile */}
-                <nav
-                    className=
-                    {`fixed inset-0 bg-white flexflex-col items-center mt-20
-                        z-[1000] lg:hidden transform transition-transform
-                        duration-400 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
-                >
-                    <ul className="w-full flex flex-col text-base font-medium text-gray-800">
-                        <li><a href="#" className="header-mobile-link">Rutas de Aprendizaje</a></li>
-                        <li><a href="#" className="header-mobile-link">Certificaciones</a></li>
-                        <li><a href="#" className="header-mobile-link">Mentores</a></li>
-                        <li><a href="#" className="header-mobile-link">Blog</a></li>
-                        <li><a href="#" className="header-mobile-link">Ingresar</a></li>
-                        <li><a href="#" className="header-mobile-link">Comienza Ahora</a></li>
-                    </ul>
-                </nav>
+                {!simple && (
+                    <>
+
+                        <button
+                            onClick={() => setMenuOpen(!menuOpen)}
+                            className={"lg:hidden z-[10001] w-10 h-10 flex items-center justify-center relative px-1 " + (menuOpen ? 'active' : '')}
+                            id="menuToggle"
+                            aria-label="Toggle menu"
+                            aria-expanded={menuOpen}
+                        >
+                            <div className=''></div>
+                        </button>
+
+                        <nav
+                            className=
+                            {`fixed inset-0 bg-white flexflex-col items-center mt-20
+                            z-[1000] lg:hidden transform transition-transform
+                            duration-400 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+                        >
+                            <ul className="w-full flex flex-col text-base font-medium text-gray-800">
+                                <li><a href="#" className="header-mobile-link">Rutas de Aprendizaje</a></li>
+                                <li><a href="#" className="header-mobile-link">Certificaciones</a></li>
+                                <li><a href="#" className="header-mobile-link">Mentores</a></li>
+                                <li><a href="#" className="header-mobile-link">Blog</a></li>
+                                <li><a href="#" className="header-mobile-link">Ingresar</a></li>
+                                <li><a href="#" className="header-mobile-link">Comienza Ahora</a></li>
+                            </ul>
+                        </nav>
+                    </>
+                )}
 
             </div>
         </header>

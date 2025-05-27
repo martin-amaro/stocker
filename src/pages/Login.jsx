@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate } from "react-router-dom";
 import { AuthError } from './../components/auth/AuthError';
 import { AuthInput } from './../components/auth/AuthInput';
+import { LoaderCircle } from 'lucide-react';
 
 
 export const Login = () => {
@@ -116,21 +117,19 @@ export const Login = () => {
         <div className='flex flex-col min-h-screen'>
             <Header simple={true} />
 
-            <div className='flex-grow flex items-center justify-center max-w-[1680px] mx-auto w-full' >
-                <div className='w-[50%] h-full flex flex-col items-center justify-center '>
+            <div className='flex-grow flex items-center justify-center mx-auto w-full' >
+                <div className='w-full lg:w-[50%] max-w-[1680px] h-full flex flex-col items-center justify-center'>
 
-
-
-                    <div className='w-8/12'>
+                    <div className='w-10/12 2xl:w-6/12 py-16'>
                         <div className="flex text-center mb-8">
                             <img src="stocker.svg" alt="logo" className="w-10 inline-block" />
                         </div>
-                        <div className='text-left mb-8 max-w-lg'>
+                        <div className='text-left mb-8'>
                             <h1 className='text-4xl font-bold font-display text-neutral-900 mb-2'>Inicia sesión</h1>
                             <p className='text-neutral-800'>¿Nuevo en {config.appName}?</p>
                         </div>
 
-                        <div className="max-w-lg w-full">
+                        <div className="w-full">
 
 
                             <form>
@@ -164,8 +163,8 @@ export const Login = () => {
                                         type='button'
                                         onClick={handleLogin}
                                         disabled={loading}
-                                        className='btn-main w-full my-0!'>
-                                        Continuar
+                                        className='btn-main w-full my-0! flex justify-center'>
+                                        {loading ? <LoaderCircle className='animate-spin'/> : "Continuar"}
                                     </button>
                                 </div>
                                 <p className="text-slate-800 text-base mt-6 text-center">¿Ya tienes una cuenta? <a href="#" className="text-blue-600 font-medium hover:underline ml-1">Inicia sesión</a></p>
