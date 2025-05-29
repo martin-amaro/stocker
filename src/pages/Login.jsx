@@ -3,7 +3,7 @@ import { Header } from '../components/Header'
 import config from '../config'
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthError } from './../components/auth/AuthError';
 import { AuthInput } from './../components/auth/AuthInput';
 import { LoaderCircle } from 'lucide-react';
@@ -34,7 +34,7 @@ export const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        
+
         if (!validateForm()) {
             return;
         }
@@ -43,28 +43,20 @@ export const Login = () => {
         setServerError(null);
 
         try {
-            const response = await axios.post(`${config.backend}/users`, {
+            const response = await axios.post(`${config.backend}/auth/login`, {
                 email,
                 password,
             });
 
-            if (response.status === 201) {
-                // Si se creó exitosamente, logueamos
-                const loginResponse = await axios.post(`${config.backend}/auth`, {
-                    username: email,
-                    password: password
-                });
+            // Si login fue exitoso
+            const token = response.data.token;
 
+            // Guardar token
+            localStorage.setItem("token", token);
 
-                const token = loginResponse.data.token;
-
-                // Guardar el token
-                localStorage.setItem("token", token);
-
-                // Redirigir
-                login(token);
-                navigate("/");
-            }
+            // Activar login y redirigir
+            login(token);
+            navigate("/");
 
         } catch (error) {
             if (error.response) {
@@ -74,22 +66,22 @@ export const Login = () => {
                 if (status === 401) {
                     setServerError("Correo o contraseña incorrectos.");
                 } else if (status === 400) {
-                    setServerError(data.message || "Solicitud incorrecta. Verifica los datos.");
+                    setServerError(data.message || "Solicitud incorrecta.");
                 } else if (status === 500) {
-                    setServerError("Error interno del servidor. Intenta más tarde.");
+                    setServerError("Error interno del servidor.");
                 } else {
-                    setServerError(data.message || "Ocurrió un error al iniciar sesión.");
+                    setServerError(data.message || "Error desconocido.");
                 }
             } else if (error.request) {
-                setServerError("No se recibió respuesta del servidor. Verifica tu conexión.");
+                setServerError("No hay respuesta del servidor.");
             } else {
-                setServerError("Error inesperado: " + error.message);
+                setServerError("Error: " + error.message);
             }
         }
         finally {
             setLoading(false);
         }
-        
+
     }
 
     const validateForm = () => {
@@ -126,7 +118,6 @@ export const Login = () => {
                         </div>
                         <div className='text-left mb-8'>
                             <h1 className='text-4xl font-bold font-display text-neutral-900 mb-2'>Inicia sesión</h1>
-                            <p className='text-neutral-800'>¿Nuevo en {config.appName}?</p>
                         </div>
 
                         <div className="w-full">
@@ -153,7 +144,7 @@ export const Login = () => {
                                         placeholder="Enter password"
                                         error={errors.password}
                                     />
-                                    
+
                                 </div>
 
                                 {serverError && <AuthError message={serverError} />}
@@ -164,10 +155,10 @@ export const Login = () => {
                                         onClick={handleLogin}
                                         disabled={loading}
                                         className='btn-main w-full my-0! flex justify-center'>
-                                        {loading ? <LoaderCircle className='animate-spin'/> : "Continuar"}
+                                        {loading ? <LoaderCircle className='animate-spin' /> : "Continuar"}
                                     </button>
                                 </div>
-                                <p className="text-slate-800 text-base mt-6 text-center">¿Ya tienes una cuenta? <a href="#" className="text-blue-600 font-medium hover:underline ml-1">Inicia sesión</a></p>
+                                <p className="text-slate-800 text-base mt-6 text-center">¿Nuevo en {config.appName}? <Link to="/register" className="text-blue-600 font-medium hover:underline ml-1">Regístrate</Link></p>
                             </form>
                         </div>
                     </div>

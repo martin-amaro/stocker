@@ -6,6 +6,7 @@ import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { PrivateRoute } from './components/PrivateRoute'
 import { BackendTester } from './components/BackendTester'
+import { Register } from './pages/Register'
 
 function App() {
   return (
@@ -13,8 +14,13 @@ function App() {
     <BackendTester />
     <Routes>
       <Route path="/" element={<Home />}></Route>
-      <Route path="/login" element={<Login />}></Route>
-      <Route path="/dashboard" element={<PrivateRoute><Home></Home></PrivateRoute>} />
+      <Route path="/login" element={<Login />}>v</Route>
+      <Route path="/register" element={<Register />}></Route>
+      <Route path="/dashboard" element={
+        <PrivateRoute>
+          <Home />
+          </PrivateRoute>
+        } />
     </Routes>
     </>
   )
