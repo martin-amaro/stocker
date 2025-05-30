@@ -18,7 +18,7 @@ import { Guest } from './../components/auth/Guest';
 export const Home = () => {
   return (
     <div>
-      <Header />
+      <Header/>
       <main>
         <Hero />
         <Partners />

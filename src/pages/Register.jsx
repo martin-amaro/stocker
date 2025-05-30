@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import { Link, useNavigate } from "react-router-dom";
 import { AuthInput } from '../components/auth/AuthInput';
+import { AuthError } from './../components/auth/AuthError';
 
 
 export const Register = () => {
