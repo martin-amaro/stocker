@@ -201,7 +201,7 @@ export const Register = () => {
 
                                 <div className="mt-12">
                                     <button
-                                        type='button'
+                                        type='submit'
                                         onClick={handleRegister}
                                         disabled={loading}
                                         className='btn-main w-full my-0! flex justify-center'>

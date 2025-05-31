@@ -66,7 +66,7 @@ export const HeaderGuest = ({ simple = false }) => {
                         ) : (
                             <>
                                 <li>
-                                    <Link className="header-link flex gap-2" to="/login">
+                                    <Link className="header-link flex gap-2" to="#">
                                         <GraduationCap />
                                         Aprende más
                                     </Link>

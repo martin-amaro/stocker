@@ -14,11 +14,20 @@ import { Heroless } from '../components/home/Heroless'
 import { Categories } from '../components/home/Categories'
 import { Auth } from './../components/auth/Auth';
 import { Guest } from './../components/auth/Guest';
+import { useAuth } from '../context/AuthContext'
+import { Navigate } from 'react-router-dom'
 
 export const Home = () => {
+  const { user } = useAuth();
+
+  // If the user is authenticated, redirect to the dashboard
+  if (user) {
+    return <Navigate to="/dashboard" />;
+  }
+
   return (
     <div>
-      <Header/>
+      <Header />
       <main>
         <Hero />
         <Partners />
@@ -26,14 +35,14 @@ export const Home = () => {
         <FeatureCards />
         <MainTestimonial />
         <Heroless />
-        
+
         <Categories />
         <Testimonials />
         <FAQ />
         <LastHook />
       </main>
       <Footer></Footer>
-      
+
     </div>
   )
 }

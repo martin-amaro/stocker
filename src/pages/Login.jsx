@@ -151,7 +151,7 @@ export const Login = () => {
 
                                 <div className="mt-12">
                                     <button
-                                        type='button'
+                                        type='submit'
                                         onClick={handleLogin}
                                         disabled={loading}
                                         className='btn-main w-full my-0! flex justify-center'>
