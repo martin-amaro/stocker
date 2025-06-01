@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAuth } from '../context/AuthContext'
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { LoadingSpinner } from './LoadingSpinner';
 
 export const PrivateRoute = ({ children }) => { 
@@ -8,5 +8,5 @@ export const PrivateRoute = ({ children }) => {
     if (loading) return <LoadingSpinner />;
 
 
-    return user ? children : <Navigate to="/login" replace />
+    return user ? <Outlet /> : <Navigate to="/login" replace />;
 }

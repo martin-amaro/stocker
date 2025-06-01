@@ -22,48 +22,32 @@ import { GuestRoute } from './components/GuestRoute';
 function App() {
   return (
     <>
-    <BackendTester />
-    <Routes>
+      <BackendTester />
+      <Routes>
 
-      {/* Home */}
-      <Route
-        path="/"
-        element={<Home />}
-      />
+        {/* Rutas públicas */}
+        <Route element={<GuestRoute />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Route>
 
-      {/* Authentication */}
-      <Route path="/login" element={
-        <GuestRoute>
-          <Login />
-        </GuestRoute>
-      }/>
 
-      <Route path="/register" element={
-        <GuestRoute>
-          <Register />
-        </GuestRoute>
-      }/>
+        {/* Rutas privadas */}
+        <Route element={<PrivateRoute />}>
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route index element={<DashboardHome />} />
+            <Route path="articles" element={<DashboardArticles />} />
+            <Route path="search" element={<DashboardSearch />} />
+            <Route path="staff" element={<DashboardStaff />} />
+            <Route path="customers" element={<DashboardCustomers />} />
+            <Route path="reports" element={<DashboardReports />} />
+            <Route path="payments" element={<DashboardPayments />} />
+            <Route path="settings" element={<DashboardSettings />} />
+          </Route>
+        </Route>
 
-      {/* Dashboard */}
-      <Route path="/dashboard"
-        element={
-        <PrivateRoute>
-          <Dashboard />
-          </PrivateRoute>
-        }
-      >
-        <Route index element={<DashboardHome />} />
-        <Route path='articles' element={<DashboardArticles />} />
-        <Route path='search' element={<DashboardSearch />} />
-        <Route path='staff' element={<DashboardStaff />} />
-        <Route path='customers' element={<DashboardCustomers />} />
-        <Route path='reports' element={<DashboardReports />} />
-        <Route path='payments' element={<DashboardPayments />} />
-        <Route path='settings' element={<DashboardSettings />} />
-
-      </Route>
-     
-    </Routes>
+      </Routes>
     </>
   )
 }
