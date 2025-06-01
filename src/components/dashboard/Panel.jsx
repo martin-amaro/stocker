@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ChartNoAxesCombined, House, IdCard, ReceiptText, Search, Settings, Tag, UsersRound } from 'lucide-react';
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import config from '../../config';
 
 import { ProfileButton } from './ProfileButton';
@@ -27,12 +27,11 @@ export const Panel = () => {
     handleClose();
   };
 
-    
-
-
     const location = useLocation();
     const navigate = useNavigate();
-    const [query, setQuery] = useState('');
+    const [searchParams] = useSearchParams();
+    const urlQuery = searchParams.get('query');
+    const [query, setQuery] = useState(urlQuery);
 
     const handleSearch = (e) => {  
         if (e.key === 'Enter') {
@@ -47,7 +46,7 @@ export const Panel = () => {
     return (
         <aside className="w-70 bg-[#fafafa] border-r border-[#ededed] p-4 space-y-4 flex flex-col justify-between">
             <div>
-                <Link className="w-full h-8 flex items-center justify-center mt-4 mb-6" to="/">
+                <Link className="w-full h-8 flex items-center justify-center mt-4 mb-6" to="/dashboard">
                     <img src={config.base + "logo.svg"} alt="" />
                 </Link>
                 <div className='w-full mb-6'>
@@ -58,11 +57,12 @@ export const Panel = () => {
                             type="text"
                             spellCheck="false"
                             placeholder="Buscar"
-                            autoComplete='off'
+                            autoComplete='new-password'
                             // value={query}
                             // onChange={(e) => setQuery(e.target.value)}
                             onKeyDown={handleSearch}
                             className="bg-transparent outline-none text-sm text-gray-700 w-full placeholder-gray-500"
+                            defaultValue={query || ''}
                         />
                     </div>
                 </div>

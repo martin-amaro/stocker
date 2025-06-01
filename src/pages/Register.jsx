@@ -7,13 +7,14 @@ import { useAuth } from '../context/AuthContext';
 import { Link, useNavigate } from "react-router-dom";
 import { AuthInput } from '../components/auth/AuthInput';
 import { AuthError } from './../components/auth/AuthError';
+import { ErrorMessage } from '../components/auth/ErrorMessage';
 
 
 export const Register = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [repassword, setRepassword] = useState('');
+    const [name, setName] = useState('');
     const [terms, setTerms] = useState(false);
     const [errors, setErrors] = useState({});
     const [serverError, setError] = useState('');
@@ -30,8 +31,8 @@ export const Register = () => {
         setPassword(e.target.value);
     }
 
-    const handleChangeRepassword = (e) => {
-        setRepassword(e.target.value);
+    const handleChangeName = (e) => {
+        setName(e.target.value);
     }
 
     const handleRegister = async (e) => {
@@ -46,14 +47,16 @@ export const Register = () => {
 
         try {
             // Registrar usuario
-            const registerResponse = await axios.post("http://localhost:8080/auth/register", {
+            
+            const registerResponse = await axios.post(`${config.backend}/auth/register`, {
                 email,
+                name,
                 password,
             });
 
             if (registerResponse.status === 201) {
                 // Si el registro fue exitoso, hacemos login
-                const loginResponse = await axios.post("http://localhost:8080/auth/login", {
+                const loginResponse = await axios.post(`${config.backend}/auth/login`, {
                     email,
                     password,
                 });
@@ -82,7 +85,6 @@ export const Register = () => {
     }
 
 
-
     const validateForm = () => {
         const newErrors = {};
 
@@ -98,10 +100,10 @@ export const Register = () => {
             newErrors.password = 'La contraseña debe tener al menos 6 caracteres.';
         }
 
-        if (!repassword) {
-            newErrors.repassword = 'Debes confirmar la contraseña.';
-        } else if (password !== repassword) {
-            newErrors.repassword = 'Las contraseñas no coinciden.';
+        if (!name) {
+            newErrors.name = 'El nombre es obligatorio.';
+        } else if (name.length < 6) {
+            newErrors.name = 'El nombre debe tener al menos 6 caracteres.';
         }
 
         if (!terms) {
@@ -112,20 +114,6 @@ export const Register = () => {
 
         return Object.keys(newErrors).length === 0; // true si no hay errores
     };
-
-
-
-
-    const ErrorMessage = ({ message }) => {
-        if (!message) return null;
-        return (
-            <div className="flex items-center text-red-600 text-sm mt-1 gap-2">
-                <CircleX size={16} />
-                <span>{message}</span>
-            </div>
-        );
-    };
-
 
 
     return (
@@ -150,6 +138,17 @@ export const Register = () => {
 
                             <form>
                                 <div className="space-y-6">
+
+                                    <AuthInput
+                                        label="Nombre y apellido"
+                                        name="name"
+                                        type="text"
+                                        action={handleChangeName}
+                                        disabled={loading}
+                                        placeholder="Ingrese el nombre"
+                                        error={errors.name}
+                                    />
+
                                     <AuthInput
                                         label="Correo electrónico"
                                         name="email"
@@ -170,15 +169,7 @@ export const Register = () => {
                                         error={errors.password}
                                     />
 
-                                    <AuthInput
-                                        label="Repetir contraseña"
-                                        name="repassword"
-                                        type="password"
-                                        action={handleChangeRepassword}
-                                        disabled={loading}
-                                        placeholder="Enter password"
-                                        error={errors.repassword}
-                                    />
+                                    
 
                                     <div className="flex items-center">
                                         <input
