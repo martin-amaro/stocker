@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Header } from '../components/Header'
 import config from '../config'
 import { CircleX, LoaderCircle } from 'lucide-react';
@@ -20,7 +20,7 @@ export const Register = () => {
     const [serverError, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const { login } = useAuth();
+    const { user, login } = useAuth();
     const navigate = useNavigate();
 
     const handleChangeEmail = (e) => {
@@ -65,7 +65,6 @@ export const Register = () => {
                 localStorage.setItem("token", token);
 
                 login(token); // función para actualizar estado global (por props)
-                navigate("/");
             }
         } catch (err) {
             if (err.response) {
@@ -115,6 +114,11 @@ export const Register = () => {
         return Object.keys(newErrors).length === 0; // true si no hay errores
     };
 
+     useEffect(() => {
+        if (user) {
+            navigate("/dashboard", { replace: true });
+        }
+    }, [user, navigate]);
 
     return (
         <div className='min-h-screen flex flex-col'>

@@ -4,9 +4,8 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { LoadingSpinner } from './LoadingSpinner';
 
 export const GuestRoute = ({ children }) => {
-  const { user, loading } = useAuth();
+    const { user, loading } = useAuth();
 
-  if (loading) return <LoadingSpinner />;
-
-  return !user ? <Outlet /> : <Navigate to="/dashboard" replace />;
+    if (loading) return <LoadingSpinner />;
+    return !user ? <Outlet /> : <Navigate to="/dashboard" replace />;
 }

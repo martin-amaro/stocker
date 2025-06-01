@@ -1,62 +1,65 @@
-    import axios from 'axios';
+import axios from 'axios';
 import React, { createContext, useContext, useEffect, useState } from 'react'
-    import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import config from '../config';
 
-    const AuthContext = createContext();
+const AuthContext = createContext();
 
-    export const AuthProvider = ({ children }) => {
-        const [token, setToken] = useState(localStorage.getItem("token"));
-        const [user, setUser] = useState(null);
-        const [loading, setLoading] = useState(true);
-        const navigate = useNavigate();
+export const AuthProvider = ({ children }) => {
+    const [token, setToken] = useState(localStorage.getItem("token"));
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
-        useEffect(() => {
-            const validateToken = async () => {
-                if (!token) {
-                    setLoading(false);
-                    setUser(null);
-                    return;
-                }
-
-                try {
-                    const response = await axios.get(`${config.backend}/auth/me`, {  
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        }
-                    });
-
-                    setUser(response.data);
-                } catch (error) {
-                    console.error("Error validating token:", error);
-                    logout();
-                } finally {
-                    setLoading(false);
-                }
-
-                console.log("Token validated successfully");
+    useEffect(() => {
+        const validateToken = async () => {
+            if (!token) {
+                setLoading(false);
+                setUser(null);
+                return;
             }
 
-            validateToken();
-        }, [token]);
+            try {
+                const response = await axios.get(`${config.backend}/auth/me`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
 
-        const login = (newToken) => {
-            localStorage.setItem("token", newToken);
-            setToken(newToken);
-        };
+                setUser(response.data);
+            } catch (error) {
+                console.error("Error validating token:", error);
+                logout();
+            } finally {
+                setLoading(false);
+            }
 
-        const logout = () => {
-            localStorage.removeItem("token");
-            setToken(null);
-            setUser(null);
-            navigate("/");
-        };
+            console.log("Token validated successfully");
+        }
 
-        return (
-            <AuthContext.Provider value={{ token, user, login, logout, loading }}>
-                {children}
-            </AuthContext.Provider>
-        )
-    }
+        validateToken();
+    }, [token]);
 
-    export const useAuth = () => useContext(AuthContext);
+    const login = (newToken) => {
+        localStorage.setItem("token", newToken);
+        setToken(newToken);
+    };
+
+    const logout = () => {
+        console.log("User logged out");
+        localStorage.removeItem("token");
+        setToken(null);
+        setUser(null);
+        setTimeout(() => {
+            navigate("/", { replace: true });
+        }, 0);
+    };
+
+    return (
+        <AuthContext.Provider value={{ token, user, login, logout, loading }}>
+            {children}
+        </AuthContext.Provider>
+    )
+}
+
+export const useAuth = () => useContext(AuthContext);

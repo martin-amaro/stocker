@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Header } from '../components/Header'
 import config from '../config'
 import axios from 'axios';
@@ -62,7 +62,7 @@ export const Login = () => {
 
             // Activar login y redirigir
             login(token);
-            navigate("/");
+            // navigate("/");
 
         } catch (error) {
             if (error.response) {
@@ -110,6 +110,13 @@ export const Login = () => {
 
         return Object.keys(newErrors).length === 0; // true si no hay errores
     };
+
+
+     useEffect(() => {
+        if (user) {
+            navigate("/dashboard", { replace: true });
+        }
+    }, [user, navigate]);
 
     return (
         <div className='flex flex-col min-h-screen'>
