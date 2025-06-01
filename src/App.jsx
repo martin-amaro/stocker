@@ -17,6 +17,7 @@ import { DashboardCustomers } from './pages/Dashboard/DashboardCustomers';
 import { DashboardReports } from './pages/Dashboard/DashboardReports'
 import { DashboardPayments } from './pages/Dashboard/DashboardPayments';
 import { DashboardSettings } from './pages/Dashboard/DashboardSettings';
+import { GuestRoute } from './components/GuestRoute';
 
 function App() {
   return (
@@ -31,14 +32,17 @@ function App() {
       />
 
       {/* Authentication */}
-      <Route
-        path="/login"
-        element={<Login />}
-      />
+      <Route path="/login" element={
+        <GuestRoute>
+          <Login />
+        </GuestRoute>
+      }/>
 
-      <Route path="/register"
-        element={<Register />}
-      />
+      <Route path="/register" element={
+        <GuestRoute>
+          <Register />
+        </GuestRoute>
+      }/>
 
       {/* Dashboard */}
       <Route path="/dashboard"
@@ -58,11 +62,7 @@ function App() {
         <Route path='settings' element={<DashboardSettings />} />
 
       </Route>
-      <Route path="/dashboarde" element={
-        <PrivateRoute>
-          <Dashboard />
-          </PrivateRoute>
-        } />
+     
     </Routes>
     </>
   )

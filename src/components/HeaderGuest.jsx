@@ -45,7 +45,7 @@ export const HeaderGuest = ({ simple = false }) => {
                 </div>
 
                 {/* Botones de acción Desktop */}
-                <div className={!simple && "hidden lg:block"}>
+                <div className={!simple ? "hidden lg:block" : ""}>
                     <ul className='flex items-center gap-3'>
                         {!simple ? (
                             <>

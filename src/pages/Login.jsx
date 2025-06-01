@@ -3,7 +3,7 @@ import { Header } from '../components/Header'
 import config from '../config'
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthError } from './../components/auth/AuthError';
 import { AuthInput } from './../components/auth/AuthInput';
 import { LoaderCircle } from 'lucide-react';
@@ -17,10 +17,16 @@ export const Login = () => {
     const [serverError, setServerError] = useState('');
     const [loading, setLoading] = useState(false);
 
+    
 
 
-    const { login } = useAuth();
+
+    const { user, login } = useAuth();
     const navigate = useNavigate();
+
+    // if (user) {
+    //     return <Navigate to="/dashboard" />;
+    // }
 
     const handleChangeEmail = (e) => {
         setServerError('');
