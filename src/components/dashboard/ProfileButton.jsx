@@ -21,7 +21,7 @@ export const ProfileButton = () => {
 
     return (
         <Dropdown className="relative w-full ">
-            <MenuButton className="relative border border-[#d5d5d5] rounded-md w-full py-4  flex justify-center items-center gap-3 text-neutral-900  font-medium hover:bg-blue-100 transition-colors duration-200 cursor-pointer">
+            <MenuButton className="relative border border-[#d5d5d5] rounded-md w-full py-4  flex items-center gap-3 text-neutral-900  font-medium hover:bg-blue-100 transition-colors duration-200 cursor-pointer">
                 <CircleUserRound />
                 <span className="truncate max-w-[160px] block">
                     { user ? user.name : "Perfil" }
