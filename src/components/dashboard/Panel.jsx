@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChartNoAxesCombined, House, IdCard, ReceiptText, Search, Settings, Tag, UsersRound } from 'lucide-react';
+import { ChartNoAxesCombined, Factory, House, IdCard, ReceiptText, Search, Settings, Tag, UsersRound } from 'lucide-react';
 import { Link, NavLink, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import config from '../../config';
 
@@ -7,10 +7,10 @@ import { ProfileButton } from './ProfileButton';
 
 
 
-const PanelItem = ({ icon, label, active = false , path=false}) => {
+const PanelItem = ({ icon, label, active = false , path=false,className=""}) => {
     return (
         <Link to={path || "#"} className={"flex items-center gap-3 px-3 py-2 rounded-lg font-medium font-app text-tiny text-black " +
-            (active ? "bg-blue-100 text-blue-700 " : "hover:bg-gray-100")}>
+            (active ? "bg-blue-100 text-blue-700 " : "hover:bg-gray-100") + " " + className}>
             <span>{icon}</span>
             {label}
         </Link>
@@ -47,7 +47,7 @@ export const Panel = () => {
         <aside className="w-70 bg-[#fafafa] border-r border-[#ededed] p-4 space-y-4 flex flex-col justify-between">
             <div>
                 <Link className="w-full h-8 flex items-center justify-center mt-4 mb-6" to="/dashboard">
-                    <img src={config.base + "logo.svg"} alt="" />
+                    <img src={config.base + "/logo.svg"} alt="" />
                 </Link>
                 <div className='w-full mb-6'>
                     <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg w-full max-w-sm dashboard-search" >
@@ -69,11 +69,22 @@ export const Panel = () => {
                 <nav className="space-y-2">
 
                     <PanelItem
+                        icon={<Factory className='w-5 h-5' />}
+                        label="Mi negocio"
+                        path="/dashboard"
+                        active={location.pathname === '/dashboarde'}
+                    />
+
+                    <hr className='border-t-neutral-200 mt-0 my-4'/>
+
+                    <PanelItem
                         icon={<House className='w-5 h-5' />}
                         label="Inicio"
                         path="/dashboard"
                         active={location.pathname === '/dashboard'}
                     />
+
+                    
 
                     <PanelItem
                         icon={<ReceiptText className='w-5 h-5' />}

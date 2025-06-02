@@ -52,6 +52,8 @@ ul {
 a, button {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 @media (max-width: 600px) {

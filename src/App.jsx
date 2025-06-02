@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { PrivateRoute } from './components/PrivateRoute'
@@ -18,6 +18,7 @@ import { DashboardReports } from './pages/Dashboard/DashboardReports'
 import { DashboardPayments } from './pages/Dashboard/DashboardPayments';
 import { DashboardSettings } from './pages/Dashboard/DashboardSettings';
 import { GuestRoute } from './components/GuestRoute';
+import { NotFound } from './pages/NotFound';
 
 function App() {
   return (
@@ -46,6 +47,10 @@ function App() {
             <Route path="settings" element={<DashboardSettings />} />
           </Route>
         </Route>
+
+
+        {/* Rutas de error */}
+        <Route path="*" element={<NotFound />} />
 
       </Routes>
     </>

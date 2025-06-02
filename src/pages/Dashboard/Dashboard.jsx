@@ -12,7 +12,7 @@ export const Dashboard = () => {
 
                 <Panel />
 
-                <main className="flex-1 p-6 overflow-y-auto">
+                <main className="flex-1 overflow-y-auto relative">
                     <Outlet />
                 </main>
             </div>
