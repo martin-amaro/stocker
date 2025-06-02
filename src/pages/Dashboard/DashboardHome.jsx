@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const DashboardHome = () => {
     return (
         <div className="">
             <h1 className="text-2xl font-semibold mb-4">Bienvenido/a otra vez.</h1>
             <p className="text-sm text-gray-500 mb-6">Configuraste un <strong>0%</strong>.</p>
+            
+            <Link to="/logout">Salir</Link >
 
             <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 bg-[#f7f7f7] p-6 rounded-md">
                 <div className="col-span-3 bg-white rounded-xl shadow p-5">

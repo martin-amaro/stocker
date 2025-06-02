@@ -3,19 +3,11 @@ import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import { CircleUserRound, GraduationCap, MessageCircleQuestion } from 'lucide-react';
 import image from '../assets/images/logo.svg';
+import { MenuBurger } from './MenuBurger';
 
-export const HeaderAuth = ({simple = false}) => {
-  const [menuOpen, setMenuOpen] = useState(false);
+export const HeaderAuth = ({ simple = false }) => {
     const { user, logout } = useAuth();
-
-    useEffect(() => {
-        if (menuOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-    }, [menuOpen]);
-
+    
     return (
         <header className="w-full bg-white border-b py-2 lg:py-0  border-gray-300">
             <div className="w-full mx-auto flex justify-between items-center px-3 py-2 md:px-12 max-w-[1900px]">
@@ -83,22 +75,7 @@ export const HeaderAuth = ({simple = false}) => {
                 {!simple && (
                     <>
 
-                        <button
-                            onClick={() => setMenuOpen(!menuOpen)}
-                            className={"lg:hidden z-[10001] w-10 h-10 flex items-center justify-center relative px-1 " + (menuOpen ? 'active' : '')}
-                            id="menuToggle"
-                            aria-label="Toggle menu"
-                            aria-expanded={menuOpen}
-                        >
-                            <div className=''></div>
-                        </button>
-
-                        <nav
-                            className=
-                            {`fixed inset-0 bg-white flexflex-col items-center mt-20
-                            z-[1000] lg:hidden transform transition-transform
-                            duration-400 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
-                        >
+                        <MenuBurger nav='mt-20'>
                             <ul className="w-full flex flex-col text-base font-medium text-gray-800">
                                 <li><a href="#" className="header-mobile-link">Rutas de Aprendizaje</a></li>
                                 <li><a href="#" className="header-mobile-link">Certificaciones</a></li>
@@ -107,7 +84,7 @@ export const HeaderAuth = ({simple = false}) => {
                                 <li><a href="#" className="header-mobile-link">Ingresar</a></li>
                                 <li><a href="#" className="header-mobile-link">Comienza Ahora</a></li>
                             </ul>
-                        </nav>
+                        </MenuBurger>
                     </>
                 )}
 

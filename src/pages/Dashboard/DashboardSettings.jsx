@@ -6,6 +6,8 @@ import config from '../../config';
 import { AuthError } from './../../components/auth/AuthError';
 import { AuthCheck } from '../../components/auth/AuthCheck';
 import { TopMessage } from '../../components/dashboard/TopMessage';
+import { DashHeader } from './../../components/dashboard/DashHeader';
+import { DashTitle } from '../../components/dashboard/DashTitle';
 
 export const DashboardSettings = () => {
   const { user, setUser, login } = useAuth();
@@ -91,9 +93,7 @@ export const DashboardSettings = () => {
 
   return (
     <div className='relative overflow-hidden'>
-      <div className="w-full py-4 px-6 bg-dash-header text-blue-text font-semibold text-sm">
-        Cuenta
-      </div>
+      <DashHeader title="Cuenta" />
 
       {/* <TopMessage message={success} /> */}
       {success && <TopMessage message={success} type="success" onClose={() => setSuccess('')} />}
@@ -101,16 +101,13 @@ export const DashboardSettings = () => {
       
 
       <div className="p-8 max-w-2xl">
-        <h1 className="text-2xl font-semibold text-gray-800">Ajustes del Dashboard</h1>
-        <p className="text-gray-600 mt-2">
+        <DashTitle title="Ajustes del Dashboard">
           Aquí puedes configurar las opciones de tu panel de control.
-        </p>
-
-
+        </DashTitle>
 
         {/* Campo de correo electrónico */}
-        <div className="mt-8 border-b border-gray-200 pb-4 flex items-center justify-between">
-          <div className="space-y-1 w-full">
+        <div className="mt-8 border-b border-gray-200 pb-4 flex flex-col middle:flex-row middle:items-center justify-between">
+          <div className="space-y-1">
             <SimpleInput
               label="Correo electrónico"
               readOnly={editMode !== 'email'}
@@ -121,7 +118,7 @@ export const DashboardSettings = () => {
             />
           </div>
 
-          <div className="ml-4 whitespace-nowrap gap-4 flex">
+          <div className="mt-4 middle:mt-0 middle:ml-4 whitespace-nowrap gap-4 flex">
             {editMode === 'email' ? (
               <>
                 <button className="btn-text" onClick={handleSave} disabled={loading} >Guardar</button>
@@ -136,7 +133,7 @@ export const DashboardSettings = () => {
         </div>
 
         {/* Campo de contraseña */}
-        <div className={"mt-6 border-b border-gray-200 pb-4 flex gap-4 " + (editMode === 'password' ? 'flex-col ' : 'justify-between items-center')} >
+        <div className={"mt-6 border-b border-gray-200 pb-4 flex gap-4 " + (editMode === 'password' ? 'flex-col ' : 'flex-col middle:flex-row middle:justify-between middle:items-center')} >
           <h3 className="font-medium text-base">Contraseña</h3>
 
           {editMode === 'password' ? (

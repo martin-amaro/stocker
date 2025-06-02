@@ -11,7 +11,7 @@
 }
 
 .header-mobile-link {
-  @apply block w-full px-6 py-4 border-b border-gray-300 focus:bg-gray-100 transition text-sm /*font-inter*/;
+  @apply flex gap-3 w-full px-6 py-4 border-b border-gray-300 focus:bg-gray-100 transition text-sm /*font-inter*/;
   /* border-bottom: 1px solid #d9d9d9; */
 }
 

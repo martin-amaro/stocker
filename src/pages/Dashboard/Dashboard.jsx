@@ -8,11 +8,11 @@ export const Dashboard = () => {
     return (
         <div className="bg-white text-gray-800">
 
-            <div className="flex h-screen">
+            <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] middle:h-screen">
 
                 <Panel />
 
-                <main className="flex-1 overflow-y-auto relative">
+                <main className="mt-14 middle:mt-0 overflow-y-auto relative">
                     <Outlet />
                 </main>
             </div>

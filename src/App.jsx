@@ -19,6 +19,8 @@ import { DashboardPayments } from './pages/Dashboard/DashboardPayments';
 import { DashboardSettings } from './pages/Dashboard/DashboardSettings';
 import { GuestRoute } from './components/GuestRoute';
 import { NotFound } from './pages/NotFound';
+import { DashboardBusiness } from './pages/Dashboard/DashboardBusiness';
+import { Logout } from './pages/Logout'
 
 function App() {
   return (
@@ -33,9 +35,11 @@ function App() {
           <Route path="/register" element={<Register />} />
         </Route>
 
+        <Route path="/logout" element={<Logout />} />
 
         {/* Rutas privadas */}
         <Route element={<PrivateRoute />}>
+
           <Route path="/dashboard" element={<Dashboard />}>
             <Route index element={<DashboardHome />} />
             <Route path="articles" element={<DashboardArticles />} />
@@ -45,6 +49,7 @@ function App() {
             <Route path="reports" element={<DashboardReports />} />
             <Route path="payments" element={<DashboardPayments />} />
             <Route path="settings" element={<DashboardSettings />} />
+            <Route path="business" element={<DashboardBusiness />} />
           </Route>
         </Route>
 
