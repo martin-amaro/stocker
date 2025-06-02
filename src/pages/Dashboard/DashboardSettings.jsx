@@ -117,6 +117,7 @@ export const DashboardSettings = () => {
               onChange={(e) => setNewEmail(e.target.value)}
               value={newEmail}
               placeholder="Ingresa tu nuevo correo electrónico"
+              error={error && editMode === 'email'}
             />
           </div>
 
@@ -146,6 +147,7 @@ export const DashboardSettings = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Nueva contraseña"
                 autoComplete="new-password"
+                error={error && editMode === 'password'}
               />
 
               <SimpleInput
@@ -154,6 +156,7 @@ export const DashboardSettings = () => {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Confirmar contraseña"
                 autoComplete="new-password"
+                error={error && editMode === 'password'}
 
               />
 
