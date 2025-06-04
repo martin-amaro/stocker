@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChartNoAxesCombined, Factory, House, IdCard, LogOut, ReceiptText, Search, Settings, Tag, User, UsersRound } from 'lucide-react';
+import { BriefcaseBusiness, ChartNoAxesCombined, Factory, House, IdCard, LogOut, ReceiptText, Search, Settings, Tag, User, UsersRound } from 'lucide-react';
 import { Link, NavLink, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import config from '../../config';
 
@@ -29,7 +29,8 @@ const PanesItemList = ({mobile = false, onItemClick = () => {}}) => {
     return (
         <>
             <PanelItem
-                icon={<Factory className='w-5 h-5' />}
+
+                icon={<BriefcaseBusiness className='w-5 h-5' />}
                 label="Mi negocio"
                 path="/dashboard/business"
                 active={location.pathname === '/dashboard/business'}

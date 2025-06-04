@@ -65,7 +65,7 @@ a, button {
 
 }
 
-input, button {
+input, button, select {
     &:disabled {
         @apply opacity-55 pointer-events-none;
     }

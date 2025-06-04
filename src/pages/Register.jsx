@@ -72,7 +72,7 @@ export const Register = () => {
                 if (err.response.status === 409) {
                     setError("Este correo ya está registrado.");
                 } else {
-                    setError(err.response.data || "Error en el servidor.");
+                    setError(err.response.data.error || "Error en el servidor.");
                 }
             } else {
                 // Error de red u otro

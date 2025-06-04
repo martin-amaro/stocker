@@ -3,6 +3,10 @@
   @apply cursor-pointer my-6 bg-[#6559ff] text-white font-medium text-base px-4 py-2.5 rounded-lg shadow-md hover:bg-blue-700 transition duration-200 ease-in-out;
 }
 
+.btn-secondary {
+  @apply cursor-pointer bg-[#f2f2f2] rounded-md px-3 py-2.5 hover:bg-[#e6f0ff] active:bg-[#cce1ff] transition-colors 
+}
+
 .btn-sec {
   /* bg-white text-indigo-600 hover:bg-gray-100 font-medium px-6 py-3 rounded */
   @apply  cursor-pointer my-6 bg-white text-[#6559ff] font-medium text-base px-4 py-2.5 rounded-lg shadow-md hover:bg-gray-100 transition duration-200 ease-in-out;
