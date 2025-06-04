@@ -65,6 +65,7 @@ export const Register = () => {
                 localStorage.setItem("token", token);
 
                 login(token); // función para actualizar estado global (por props)
+                
             }
         } catch (err) {
             if (err.response) {
@@ -116,7 +117,7 @@ export const Register = () => {
 
      useEffect(() => {
         if (user) {
-            navigate("/dashboard", { replace: true });
+            navigate("/dashboard/business", { replace: true });
         }
     }, [user, navigate]);
 

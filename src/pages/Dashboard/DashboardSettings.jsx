@@ -22,6 +22,8 @@ export const DashboardSettings = () => {
   const [loading, setLoading] = useState(false);
   const [editMode, setEditMode] = useState('');
 
+  
+
   console.log(user)
 
   const handleSave = async () => {

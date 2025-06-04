@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { X } from 'lucide-react'
 import { Modal } from '@mui/base'
 import { Dialog as Diag} from '@base-ui-components/react/dialog';
+import { ErrorMessage } from './../auth/ErrorMessage';
 
 export const Dialog = ({
   title = "Título del diálogo",
@@ -13,7 +14,8 @@ export const Dialog = ({
   showActions = true,
   triggerText = "Abrir diálogo",
   triggerClass = null,
-  modalClass = ""
+  modalClass = "",
+  canSave = null
 }) => {
 
   const handleOpen = () => {
@@ -26,13 +28,11 @@ export const Dialog = ({
 
   const handleSave = () => {
     if (onSave) onSave()
-    handleClose()
   }
 
   return (
-    <Diag.Root>
+    <Diag.Root dismissible={false}>
       <Diag.Trigger
-        // onClick={handleOpen}
         className={!triggerClass ? `px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition` : triggerClass}
       >
         {triggerText}
@@ -48,29 +48,34 @@ export const Dialog = ({
             }>
             <div className="py-3 px-4 border-b border-gray-200 flex justify-between items-center">
               <Diag.Title className="text-xl font-semibold">{title}</Diag.Title>
-              <button
+              <Diag.Close
                 className="btn-secondary p-3"
                 onClick={handleClose}>
                 <X className="size-5 text-neutral-900" />
-              </button>
+              </Diag.Close>
             </div>
 
             <div className="px-6 py-4">
+
               {children}
+              {typeof canSave === "string" && <ErrorMessage className="mt-3" message={canSave} /> }
+
             </div>
 
             {showActions && (
               <div className="flex justify-end mt-6 gap-2 py-3 px-4 border-t border-gray-200">
-                <Diag.Close
+                {/* <Diag.Close
                   onClick={handleClose}
                   className="btn-secondary"
                 >
                   {cancelText}
-                </Diag.Close>
+                </Diag.Close> */}
+
 
                 <Diag.Close
                   onClick={handleSave}
                   className="btn-main m-0! rounded-md! shadow-none!"
+                  disabled={canSave ? true : false}
                 >
                   {saveText}
                 </Diag.Close>

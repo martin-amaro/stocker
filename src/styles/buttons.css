@@ -1,6 +1,7 @@
 
 .btn-main {
-  @apply cursor-pointer my-6 bg-[#6559ff] text-white font-medium text-base px-4 py-2.5 rounded-lg shadow-md hover:bg-blue-700 transition duration-200 ease-in-out;
+  @apply cursor-pointer  bg-[#6559ff] text-white font-medium text-base px-4 py-2.5 rounded-lg shadow-md hover:bg-blue-700 transition duration-200 ease-in-out;
+  /* my-6 */
 }
 
 .btn-secondary {
