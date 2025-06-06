@@ -28,17 +28,6 @@ const PanesItemList = ({mobile = false, onItemClick = () => {}}) => {
 
     return (
         <>
-            <PanelItem
-
-                icon={<BriefcaseBusiness className='w-5 h-5' />}
-                label="Mi negocio"
-                path="/dashboard/business"
-                active={location.pathname === '/dashboard/business'}
-                headerLink={mobile}
-                onClick={onItemClick}
-            />
-
-            <hr className={ !mobile ? 'border-t-neutral-200 mt-0 my-4' : 'hidden'} />
 
             <PanelItem
                 icon={<House className='w-5 h-5' />}
@@ -90,6 +79,19 @@ const PanesItemList = ({mobile = false, onItemClick = () => {}}) => {
                 label="Personal"
                 path="/dashboard/staff"
                 active={location.pathname === '/dashboard/staff'}
+                headerLink={mobile}
+                onClick={onItemClick}
+            />
+
+            <hr className={ !mobile ? 'border-t-neutral-200 mt-0 my-4' : 'hidden'} />
+
+
+            <PanelItem
+
+                icon={<BriefcaseBusiness className='w-5 h-5' />}
+                label="Mi negocio"
+                path="/dashboard/business"
+                active={location.pathname === '/dashboard/business'}
                 headerLink={mobile}
                 onClick={onItemClick}
             />

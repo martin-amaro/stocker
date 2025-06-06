@@ -105,7 +105,7 @@ export const DashboardSettings = () => {
       
 
       <div className="p-8 max-w-2xl">
-        <DashTitle title="Ajustes del Dashboard">
+        <DashTitle title="Ajustes">
           Aquí puedes configurar las opciones de tu panel de control.
         </DashTitle>
 

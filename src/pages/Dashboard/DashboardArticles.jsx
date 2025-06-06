@@ -1,7 +1,8 @@
 import React from 'react'
+import { ComingSoon } from '../../components/dashboard/ComingSoon'
 
 export const DashboardArticles = () => {
   return (
-    <div>DashboardArticles</div>
+    <ComingSoon />
   )
 }

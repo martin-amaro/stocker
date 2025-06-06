@@ -139,7 +139,7 @@ export const DashboardBusiness = () => {
       <DashHeader title="Mi negocio" />
       <div className="p-8 max-w-2xl">
         <DashTitle title="Acerca de">
-          Aquí puedes configurar las opciones de tu panel de control.
+          Aquí puedes configurar tu negocio.
         </DashTitle>
 
         {success && <TopMessage message={success} type="success" onClose={() => setSuccess('')} />}
