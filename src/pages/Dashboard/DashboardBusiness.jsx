@@ -79,7 +79,8 @@ export const DashboardBusiness = () => {
 
       const response = await axios.patch(`${config.backend}/business/${user.business?.id}`, {
         name: businessName,
-        industry: businessType
+        industry: businessType,
+        address
       });
 
       if (response.status === 200) {
