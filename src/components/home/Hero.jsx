@@ -28,7 +28,7 @@ export const Hero = () => {
                 <p className="text-[1.12rem]">Gestión de stock eficiente, precisa y en tiempo real.</p>
                 <div className='flex gap-4'>
                     
-                    <Link to='/register' className="btn-main"> Regístrate gratis </Link>
+                    <Link to='/register' className="btn-main my-4"> Regístrate gratis </Link>
                 
                 </div>
             </div>

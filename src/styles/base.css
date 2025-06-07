@@ -6,7 +6,7 @@
 
     --marquee-width: 1000px;
     --marquee-height: 200px;
-    --marquee-elements-displayed: 5;
+    --marquee-elements-displayed: 6;
     --marquee-gap: 3rem;
     --marquee-element-width: calc((var(--marquee-width) / var(--marquee-elements-displayed)) - var(--marquee-gap));
     --marquee-animation-duration: calc(var(--marquee-elements) * 3s);
