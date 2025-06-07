@@ -80,21 +80,13 @@ export const DashboardBusiness = () => {
       const response = await axios.patch(`${config.backend}/business/${user.business?.id}`, {
         name: businessName,
         industry: businessType,
-        address
+        address: address
       });
 
       if (response.status === 200) {
         const { user: updatedBusiness, token: newToken } = response.data;
         setBusinessName(updatedBusiness.name);
         setUser({... user, business: updatedBusiness})
-        console.log(updatedBusiness)
-        // localStorage.setItem("token", newToken);
-        // login(newToken);
-
-        // setEmail(updatedBusiness.email);
-        //setUser(prev => ({ ...prev, email: newEmail }));
-        // setSuccess('Correo actualizado correctamente');
-        // setEditMode('');
       }
 
       // await new Promise(resolve => setTimeout(resolve, 1000));
