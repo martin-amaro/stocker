@@ -3,35 +3,40 @@ import { X } from 'lucide-react'
 import { Modal } from '@mui/base'
 import { Dialog as Diag} from '@base-ui-components/react/dialog';
 import { ErrorMessage } from './../auth/ErrorMessage';
+import { ButtonMain } from './../gui/ButtonMain';
 
 export const Dialog = ({
   title = "Título del diálogo",
   children,
   onSave,
   onCancel,
-  saveText = "Aceptar",
-  cancelText = "Cancelar",
+  buttonText = "Aceptar",
+  buttonClass = "btn-main",
   showActions = true,
   triggerText = "Abrir diálogo",
   triggerClass = null,
   modalClass = "",
-  canSave = null
+  canSave = null,
 }) => {
 
-  const handleOpen = () => {
-  }
+
 
   const handleClose = () => {
-    // setTimeout(() => setOpen(false), 300)
     if (onCancel) onCancel()
   }
 
-  const handleSave = () => {
-    if (onSave) onSave()
+  const handleSave = async () => {
+    setLoading(true);
+    if (onSave) await onSave();
+    setOpen(false);
+    setLoading(false);
   }
 
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   return (
-    <Diag.Root dismissible={false}>
+    <Diag.Root dismissible={false} open={open}  onOpenChange={setOpen}>
       <Diag.Trigger
         className={!triggerClass ? `px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition` : triggerClass}
       >
@@ -59,26 +64,19 @@ export const Dialog = ({
 
               {children}
               {typeof canSave === "string" && <ErrorMessage className="mt-3" message={canSave} /> }
-
             </div>
 
             {showActions && (
               <div className="flex justify-end mt-6 gap-2 py-3 px-4 border-t border-gray-200">
-                {/* <Diag.Close
-                  onClick={handleClose}
-                  className="btn-secondary"
-                >
-                  {cancelText}
-                </Diag.Close> */}
-
-
-                <Diag.Close 
-                  onClick={handleSave}
-                  className="btn-main m-0! rounded-md! shadow-none!"
+                <ButtonMain
                   disabled={canSave ? true : false}
-                >
-                  {saveText}
-                </Diag.Close>
+                  loading={loading}
+                  onClick={handleSave}
+                  skin={buttonClass}
+                  className='rounded-md! '
+                  >
+                  {buttonText}
+                </ButtonMain>
               </div>
             )}
           </Diag.Popup>
