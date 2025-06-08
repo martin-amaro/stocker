@@ -24,6 +24,7 @@ export const DashboardSettings = () => {
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
   const [editMode, setEditMode] = useState('');
+  const [deleting, setDeleting] = useState(false);
 
   const handleSave = async () => {
     setError('');
@@ -74,7 +75,7 @@ export const DashboardSettings = () => {
       console.error(err);
 
       if (err.response?.data) {
-        setError(err.response.data); 
+        setError(err.response.data);
       } else {
         setError('Ocurrió un error al actualizar los datos');
       }
@@ -93,32 +94,19 @@ export const DashboardSettings = () => {
   };
 
   const handleDeleteAccount = async () => {
-    return (
-          <Dialog
-              title="Eliminar cuenta"
-              onSave={handleDeleteAccount}
-              onCancel={() => { return "true" }}
-              triggerText='Eliminar'
-              triggerClass='btn-text text-red-500!'
-              canSave={false}
-            >
-              <p className='text-tiny text-neutral-800'>¿Estás seguro de eliminar la cuenta? Esta acción no se puede deshacer.</p>
-            </Dialog>
-        )
+    setDeleting(true);
     try {
       const response = await axios.delete(`${config.backend}/users/${user.id}`, {
         id: user.id
       });
 
       if (response.status === 204) {
-        
-        setSuccess('Se ha eliminado correctamente');
         navigate("/logout")
       }
     }
     catch (err) {
       if (err.response?.data) {
-        setError(err.response.data); 
+        setError(err.response.data);
       } else {
         setError('Ocurrió un error al actualizar los datos');
       }
@@ -221,15 +209,19 @@ export const DashboardSettings = () => {
           )}
         </div>
 
+        {/* Danger Zone */}
         <div className="mt-6 border-b border-gray-200 pb-4 flex flex-col middle:flex-row middle:items-center justify-between">
           <label className="font-medium text-base text-slate-800 mb-1 block">Mi cuenta</label>
           <div className="mt-4 middle:mt-0 middle:ml-4 whitespace-nowrap gap-4 flex">
             <Dialog
               title="Eliminar cuenta"
               onSave={handleDeleteAccount}
+              loading={deleting}
               onCancel={() => { return "true" }}
               triggerText='Eliminar'
               triggerClass='btn-text text-red-500!'
+              buttonText='Eliminar'
+              buttonClass='btn-danger w-24'
               canSave={false}
             >
               <p className='text-tiny text-neutral-800'>¿Estás seguro de eliminar la cuenta? Esta acción no se puede deshacer.</p>
