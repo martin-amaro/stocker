@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthInput } from '../components/auth/AuthInput';
 import { AuthError } from './../components/auth/AuthError';
 import { ErrorMessage } from '../components/auth/ErrorMessage';
+import { isValidEmail } from '../utils/validators';
 
 
 export const Register = () => {
@@ -90,7 +91,7 @@ export const Register = () => {
 
         if (!email) {
             newErrors.email = 'El correo electrónico es obligatorio.';
-        } else if (!/\S+@\S+\.\S+/.test(email)) {
+        } else if (!isValidEmail(email)) {
             newErrors.email = 'El formato del correo no es válido.';
         }
 
