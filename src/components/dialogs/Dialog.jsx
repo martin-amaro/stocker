@@ -15,8 +15,11 @@ export const Dialog = ({
   showActions = true,
   triggerText = "Abrir diálogo",
   triggerClass = null,
+  triggerIcon = (<></>),
+  triggerClick = () => {},
   modalClass = "",
   canSave = null,
+  openDef = false
 }) => {
 
 
@@ -32,14 +35,16 @@ export const Dialog = ({
     setLoading(false);
   }
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(openDef);
   const [loading, setLoading] = useState(false);
 
   return (
     <Diag.Root dismissible={false} open={open}  onOpenChange={setOpen}>
       <Diag.Trigger
         className={!triggerClass ? `px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition` : triggerClass}
+        onClick={triggerClick}
       >
+        {triggerIcon}
         {triggerText}
       </Diag.Trigger>
 

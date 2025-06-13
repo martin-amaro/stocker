@@ -26,7 +26,7 @@ const BusinessType = {
 }
 
 export const DashboardBusiness = () => {
-  const { user, setUser, login } = useAuth();
+  const { user, setUser, login, token } = useAuth();
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
@@ -41,19 +41,6 @@ export const DashboardBusiness = () => {
   const [newAddress, setNewAddress] = useState(address);
 
   const [hasChanges, setHasChanges] = useState(false);
-
-  // Detectar cambios
-  // useEffect(() => {
-  //   const changed =
-  //     businessName !== newBusinessName ||
-  //     businessType !== newBusinessType ||
-  //     address !== newAddress;
-  //   setHasChanges(changed);
-  // }, [businessName, businessType, address, newBusinessName, newBusinessType, newAddress]);
-
-  //  useEffect(() => { setNewBusinessName(businessName); }, [businessName]);
-  // useEffect(() => { setNewBusinessType(businessType); }, [businessType]);
-  // useEffect(() => { setNewAddress(address); }, [address]);
 
   // Validación
   const validateInputs = () => {
@@ -77,35 +64,40 @@ export const DashboardBusiness = () => {
     setLoading(true);
     try {
 
-      const response = await axios.patch(`${config.backend}/business/${user.business?.id}`, {
+      const response = await axios.patch(`${config.backend}/business/me`, {
         name: businessName,
         industry: businessType,
         address: address
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       });
 
+      console.log(response.data)
+
+
       if (response.status === 200) {
-        const { user: updatedBusiness, token: newToken } = response.data;
+        const updatedBusiness = response.data;
+        
+
         setBusinessName(updatedBusiness.name);
-        setUser({... user, business: updatedBusiness})
+        setBusinessType(updatedBusiness.industry);
+        setAddress(updatedBusiness.address);
+        setUser({ ...user, business: updatedBusiness });
+        setSuccess('Cambios guardados correctamente.');
       }
 
-      // await new Promise(resolve => setTimeout(resolve, 1000));
-
-      setBusinessName(newBusinessName);
-      setBusinessType(newBusinessType);
-      setAddress(newAddress);
-      setSuccess('Cambios guardados correctamente.');
     } catch (err) {
-      console.log(err)
       if (err.response?.data) {
-        setError(err.response.data); // Si el backend envía un mensaje claro, ej: "El email ya está en uso"
+        setError(err.response.data);
       } else {
         setError('Ocurrió un error al actualizar los datos');
+        console.log(err)
       }
     } finally {
       setLoading(false);
       setHasChanges(false);
-
     }
   };
 
@@ -124,8 +116,6 @@ export const DashboardBusiness = () => {
     setSuccess('');
     setHasChanges(false);
   };
-
-
 
   return (
     <div>
