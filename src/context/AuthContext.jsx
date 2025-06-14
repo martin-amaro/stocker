@@ -12,6 +12,8 @@ export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        console.log(user)
+
         const validateToken = async () => {
             if (!token) {
                 setLoading(false);

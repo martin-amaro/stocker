@@ -1,9 +1,9 @@
 import React from 'react'
 import { ErrorMessage } from '../auth/ErrorMessage'
 
-export const SimpleInput = ({ label, name, type, onChange=()=>{}, disabled=false, placeholder="", error="", readOnly=false, value="", autoComplete='on'}) => {
+export const SimpleInput = ({ label, name, type, className="", onChange=()=>{}, disabled=false, placeholder="", error="", readOnly=false, value="", autoComplete='on'}) => {
   return (
-    <div>
+    <div className={className ? className : ''}>
       {label && <label className="font-medium text-base text-slate-800 mb-1 block">{label}</label>}
       <input
         name={name}

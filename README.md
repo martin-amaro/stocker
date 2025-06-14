@@ -17,6 +17,10 @@ Puedes ver una demostración en vivo de la aplicación aquí (Sólo frontend):
 
 👉 [Demo de Stocker](https://martin-amaro.github.io/stocker/)
 
+Para utilizar **Stocker** de forma completa, necesitas correr también el backend, hecho en SpringBoot.
+
+👉 [Ir al repositorio del backend](https://github.com/dnlm7/stocker-backend)
+
 ## Características
 
 - **Gestión de inventarios personalizada**: Dependiendo de las necesidades específicas de cada cliente, la app permite acceder a diferentes tipos de inventarios.
@@ -33,27 +37,30 @@ Este proyecto está siendo desarrollado con las siguientes tecnologías:
 - **TailwindCSS**: Para aplicar estilos de forma rápida y flexible mediante clases utilitarias.
 - **Vite**: Como entorno de desarrollo moderno y optimizado, que permite una carga más rápida y una mejor experiencia durante el desarrollo.
 
-
 ## **Instalación**
 
 Para instalar y ejecutar el proyecto en tu máquina local, sigue estos pasos:
 
 1. **Clona el repositorio**:
+
     ```bash
     git clone https://github.com/martin-amaro/Stocker.git
     ```
 
 2. **Accede a la carpeta del proyecto**:
+
     ```bash
     cd Stocker
     ```
 
 3. **Instala las dependencias**:
+
     ```bash
     npm install
     ```
 
 4. **Inicia el proyecto**:
+
     ```bash
     npm run dev
     ```

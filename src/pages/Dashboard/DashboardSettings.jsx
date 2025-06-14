@@ -10,9 +10,10 @@ import { DashHeader } from './../../components/dashboard/DashHeader';
 import { DashTitle } from '../../components/dashboard/DashTitle';
 import { Dialog } from './../../components/dialogs/Dialog';
 import { useNavigate } from 'react-router-dom';
+import { isValidEmail } from './../../utils/validators';
 
 export const DashboardSettings = () => {
-  const { user, setUser, login } = useAuth();
+  const { user, login, token } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState(user.email);
   const [newEmail, setNewEmail] = useState(email);
@@ -24,6 +25,7 @@ export const DashboardSettings = () => {
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
   const [editMode, setEditMode] = useState('');
+  const [deleting, setDeleting] = useState(false);
 
   const handleSave = async () => {
     setError('');
@@ -31,50 +33,70 @@ export const DashboardSettings = () => {
     setLoading(true);
 
     try {
+      let payload = {};
+      let successMessage = '';
+      let onSuccess = () => { };
+
       if (editMode === 'email') {
-        if (!newEmail.includes('@') || !newEmail.includes('.')) {
+        if (!isValidEmail(newEmail)) {
           setError('Correo inválido');
-        } else {
-          const response = await axios.patch(`${config.backend}/users/${user.id}`, {
-            email: newEmail
-          });
-
-          if (response.status === 200) {
-            const { user: updatedUser, token: newToken } = response.data;
-            localStorage.setItem("token", newToken);
-            login(newToken);
-
-            setEmail(updatedUser.email);
-            //setUser(prev => ({ ...prev, email: newEmail }));
-            setSuccess('Correo actualizado correctamente');
-            setEditMode('');
-          }
+          setLoading(false);
+          return;
         }
+
+        payload = { email: newEmail };
+        successMessage = 'Correo actualizado correctamente';
+
+        onSuccess = (updatedUser, newToken) => {
+          localStorage.setItem("token", newToken);
+          login(newToken);
+          setEmail(updatedUser.email);
+        };
       }
 
       if (editMode === 'password') {
         if (password.length < 6) {
           setError('La contraseña debe tener al menos 6 caracteres');
-        } else if (password !== confirmPassword) {
-          setError('Las contraseñas no coinciden');
-        } else {
-          const response = await axios.patch(`${config.backend}/users/${user.id}`, {
-            password: password
-          });
-
-          if (response.status === 200) {
-            setSuccess('Contraseña actualizada correctamente');
-            setPassword('');
-            setConfirmPassword('');
-            setEditMode('');
-          }
+          setLoading(false);
+          return;
         }
+        if (password !== confirmPassword) {
+          setError('Las contraseñas no coinciden');
+          setLoading(false);
+          return;
+        }
+
+        payload = { password };
+        successMessage = 'Contraseña actualizada correctamente';
+
+        onSuccess = () => {
+          setPassword('');
+          setConfirmPassword('');
+        };
+      }
+
+      if (!payload || Object.keys(payload).length === 0) {
+        setLoading(false);
+        return;
+      }
+
+      const response = await axios.patch(`${config.backend}/users/me`, payload, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      if (response.status === 200) {
+        const { user: updatedUser, token: newToken } = response.data;
+
+        onSuccess(updatedUser, newToken);
+        setSuccess(successMessage);
+        setEditMode('');
       }
     } catch (err) {
       console.error(err);
 
       if (err.response?.data) {
-        setError(err.response.data); 
+        const data = err.response.data;
+        setError(typeof data === 'string' ? data : data?.error || 'Error desconocido');
       } else {
         setError('Ocurrió un error al actualizar los datos');
       }
@@ -82,6 +104,7 @@ export const DashboardSettings = () => {
 
     setLoading(false);
   };
+
 
   const handleCancel = () => {
     setEditMode('');
@@ -93,32 +116,22 @@ export const DashboardSettings = () => {
   };
 
   const handleDeleteAccount = async () => {
-    return (
-          <Dialog
-              title="Eliminar cuenta"
-              onSave={handleDeleteAccount}
-              onCancel={() => { return "true" }}
-              triggerText='Eliminar'
-              triggerClass='btn-text text-red-500!'
-              canSave={false}
-            >
-              <p className='text-tiny text-neutral-800'>¿Estás seguro de eliminar la cuenta? Esta acción no se puede deshacer.</p>
-            </Dialog>
-        )
+    setDeleting(true);
+
     try {
-      const response = await axios.delete(`${config.backend}/users/${user.id}`, {
-        id: user.id
+      const response = await axios.delete(`${config.backend}/users/me`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       });
 
       if (response.status === 204) {
-        
-        setSuccess('Se ha eliminado correctamente');
         navigate("/logout")
       }
     }
     catch (err) {
       if (err.response?.data) {
-        setError(err.response.data); 
+        setError(err.response.data);
       } else {
         setError('Ocurrió un error al actualizar los datos');
       }
@@ -221,15 +234,19 @@ export const DashboardSettings = () => {
           )}
         </div>
 
+        {/* Danger Zone */}
         <div className="mt-6 border-b border-gray-200 pb-4 flex flex-col middle:flex-row middle:items-center justify-between">
           <label className="font-medium text-base text-slate-800 mb-1 block">Mi cuenta</label>
           <div className="mt-4 middle:mt-0 middle:ml-4 whitespace-nowrap gap-4 flex">
             <Dialog
               title="Eliminar cuenta"
               onSave={handleDeleteAccount}
+              loading={deleting}
               onCancel={() => { return "true" }}
               triggerText='Eliminar'
               triggerClass='btn-text text-red-500!'
+              buttonText='Eliminar'
+              buttonClass='btn-danger w-24'
               canSave={false}
             >
               <p className='text-tiny text-neutral-800'>¿Estás seguro de eliminar la cuenta? Esta acción no se puede deshacer.</p>

@@ -8,6 +8,7 @@ export const ButtonMain = ({
     className = '',
     loading = null,
     disabled = null,
+    skin = 'btn-main',
     children
 }) => {
     const Component = to ? Link : 'button'
@@ -22,7 +23,7 @@ export const ButtonMain = ({
     return (
         <Component
             {...props}
-            className={`btn-main flex justify-center ${className}`}
+            className={`${skin} flex justify-center ${className}`}
         >
             {loading ? <LoaderCircle className='animate-spin' /> : children}
         </Component>
