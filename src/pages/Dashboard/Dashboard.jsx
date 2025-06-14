@@ -29,7 +29,7 @@ export const Dashboard = () => {
                             <div>
                                 <Link to="/dashboard/business" className='btn-secondary border border-gray-600'>Completar</Link>
                             </div>
-                        </div>
+                        </div>  
                     )}
                     <Outlet />
                 </main>
