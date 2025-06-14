@@ -2,21 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Package, Settings, Plus, Save, Search, Filter } from 'lucide-react';
 import { DashHeader } from './../../components/dashboard/DashHeader';
 import { DashTitle } from './../../components/dashboard/DashTitle';
+import { TopMessage } from '../../components/dashboard/TopMessage';
+import { SimpleInput } from '../../components/dashboard/SimpleInput';
 
 
-  return (
-    <div className='fixed top-0 left-0 right-0 z-50 animate-pulse shadow-md'>
-      <div
-        className={`h-full w-full p-4 text-sm text-white flex justify-center items-center gap-2 ${
-          type === 'success' ? 'bg-green-600' : 'bg-red-600'
-        }`}
-        role='alert'
-      >
-        <span className='font-medium'>{message}</span>
-      </div>
-    </div>
-  );
-};
 
 // Componente principal adaptado para usar los componentes anteriores
 export const DashboardArticles = ({title = "Dashboard"}) => {
