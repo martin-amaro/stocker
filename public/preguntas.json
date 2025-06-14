@@ -1,0 +1,30 @@
+[
+  {
+    "pregunta": "¿Qué es el gestor de inventario?",
+    "respuesta": "Es una solución integral para almacenar, gestionar y controlar inventarios de manera eficiente en diversos sectores como retail, hotelería, restaurantes, construcción y más. Facilita la administración de productos, stock, entradas y salidas en tiempo real."
+  },
+  {
+    "pregunta": "¿Puedo cancelar mi suscripción en cualquier momento?",
+    "respuesta": "Sí, tienes la libertad de cancelar tu suscripción en cualquier momento sin penalizaciones ni costos adicionales."
+  },
+  {
+    "pregunta": "¿El software es compatible con dispositivos móviles y tablets?",
+    "respuesta": "Sí, nuestra plataforma está diseñada para funcionar perfectamente en dispositivos móviles y tablets, permitiéndote gestionar tu inventario desde cualquier lugar."
+  },
+  {
+    "pregunta": "¿Puedo exportar mis datos a Excel o CSV?",
+    "respuesta": "Por supuesto, puedes exportar toda la información de tu inventario en formatos Excel y CSV para realizar análisis, respaldos o integraciones con otros sistemas."
+  },
+  {
+    "pregunta": "¿Es posible integrar el gestor con otros sistemas o software?",
+    "respuesta": "Sí, ofrecemos opciones de integración mediante APIs y exportación de datos para conectarte con sistemas contables, ERP o plataformas de ventas."
+  },
+  {
+    "pregunta": "¿Cómo se asegura la privacidad y seguridad de mis datos?",
+    "respuesta": "Contamos con protocolos de seguridad avanzados, encriptación de datos y backups automáticos para garantizar la protección y disponibilidad de tu información."
+  },
+  {
+    "pregunta": "¿Puedo gestionar múltiples ubicaciones o sucursales?",
+    "respuesta": "Sí, el sistema permite administrar inventarios de múltiples sucursales o almacenes desde una única plataforma."
+  }
+]

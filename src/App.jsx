@@ -21,6 +21,10 @@ import { GuestRoute } from './components/GuestRoute';
 import { NotFound } from './pages/NotFound';
 import { DashboardBusiness } from './pages/Dashboard/DashboardBusiness';
 import { Logout } from './pages/Logout'
+import { PricingPlans } from './components/PricingPlans';
+import { RestaurantSection } from './components/RestaurantSection';
+import { RetailSection } from './components/RetailSection';
+import { BeautySection } from './components/BeautySection';
 
 function App() {
   return (
@@ -33,6 +37,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/pricing" element={<PricingPlans />} />
+          <Route path="/restaurantes" element={<RestaurantSection />} />
+          <Route path="/retail" element={<RetailSection />} />
+          <Route path="/belleza" element={<BeautySection />} />
         </Route>
 
         <Route path="/logout" element={<Logout />} />
