@@ -5,6 +5,9 @@ import { DashTitle } from './../../components/dashboard/DashTitle';
 import { TopMessage } from '../../components/dashboard/TopMessage';
 import { SimpleInput } from '../../components/dashboard/SimpleInput';
 
+import { TopMessage } from '../../components/dashboard/TopMessage';
+import { SimpleInput } from '../../components/dashboard/SimpleInput';
+
 
 
 // Componente principal adaptado para usar los componentes anteriores

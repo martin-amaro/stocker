@@ -6,6 +6,7 @@ import { MenuItem } from '@mui/base/MenuItem';
 import { ChevronDown, CircleUserRound, LogOut, User } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { ROLE_INFO } from '../../constants/roles';
 
 export const ProfileButton = () => {
   const { user } = useAuth();
@@ -21,18 +22,20 @@ export const ProfileButton = () => {
     <Dropdown open={open} onOpenChange={(event, isOpen) => setOpen(isOpen)}>
       <div className="relative w-full">
         <MenuButton
-          className={"relative border border-[#d5d5d5] rounded-md w-full p-4 flex justify-between items-center gap-3 text-neutral-900 font-medium transition-colors duration-200 cursor-pointer " +
+          className={"relative border border-[#d5d5d5] rounded-md w-full px-4 py-3 flex justify-between items-center gap-3 text-neutral-900 font-medium transition-colors duration-200 cursor-pointer " +
             (open ? 'bg-blue-100 ' : 'hover:bg-blue-100' )
           }
         >
+          {/* Vista */}
           <div className="flex gap-3 items-center">
             <CircleUserRound />
-            <span className="truncate max-w-[160px] block">
+            <span className="truncate max-w-[150px] block text-left">
               {user ? user.name : 'Perfil'}
+              <p className='text-tiny text-neutral-700 font-normal'>{ROLE_INFO[user.role]?.[0]}</p>
             </span>
           </div>
           <ChevronDown
-            className={`transition-transform duration-300 ${open ? 'rotate-180' : 'rotate-0'
+            className={`shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : 'rotate-0'
               }`}
           />
         </MenuButton>

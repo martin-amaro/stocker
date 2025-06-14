@@ -1,31 +1,7 @@
-# Licencia de Uso - Stockering
+Copyright © 2025 Martin Amaro, Diego Cárdenas and Daniel Muñoz
 
-Copyright (c) 2025  
-Martin Amaro, Diego Cárdenas, Daniel Muñoz
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-Este software y todo su contenido asociado (en adelante, "el Proyecto") es propiedad exclusiva de sus autores: **Martin Amaro**, **Diego Cárdenas** y **Daniel Muñoz**.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-## Permisos
-
-Queda expresamente permitido el uso personal y no comercial de este Proyecto, siempre que se mantenga intacto y sin modificaciones. No se autoriza su redistribución, publicación, copia, modificación ni uso comercial **sin el consentimiento previo y por escrito de todos los autores mencionados**.
-
-## Restricciones
-
-No está permitido:
-
-- Modificar total o parcialmente el código del Proyecto.
-- Redistribuir o compartir copias del Proyecto, ni de forma gratuita ni comercial.
-- Usar este Proyecto como base para otros desarrollos sin autorización expresa de los autores.
-- Eliminar o alterar los créditos de autoría.
-
-## Derechos reservados
-
-Todos los derechos sobre este Proyecto están reservados exclusivamente a sus creadores. Cualquier uso no autorizado podrá ser considerado una violación a los derechos de propiedad intelectual.
-
-## Contacto
-
-Para consultas sobre uso, licenciamiento o colaboración, puedes ponerte en contacto con cualquiera de los autores mediante los canales oficiales del repositorio o correo electrónico si se proporciona.
-
----
-
-**Stockering** es un proyecto en desarrollo. Agradecemos el interés, pero pedimos respeto total por el trabajo realizado.
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

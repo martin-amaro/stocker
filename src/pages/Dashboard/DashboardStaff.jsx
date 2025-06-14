@@ -14,15 +14,7 @@ import config from '../../config';
 import { LoadingSection } from './../../components/LoadingSection';
 import { isValidEmail } from '../../utils/validators';
 import { TopMessage } from '../../components/dashboard/TopMessage';
-
-
-const RoleType = {
-  'GUEST': ['Invitado', 'Acceso limitado, solo lectura o revisión parcial del sistema.'],
-  'USER': ['Usuario', 'Ejecuta tareas asignadas como entradas, salidas y movimientos.'],
-  'MOD': ['Moderador', 'Supervisa y gestiona contenidos, acciones básicas de usuarios.'],
-  'ADMIN': ['Administrador', 'Control total del sistema, usuarios, configuraciones y permisos.'],
-}
-
+import { ROLE_INFO, ROLES } from '../../constants/roles';
 
 export const DashboardStaff = () => {
 
@@ -30,11 +22,13 @@ export const DashboardStaff = () => {
   const [staff, setStaff] = useState([]);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+
 
   // User data
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [role, setRole] = useState('USER');
+  const [role, setRole] = useState(ROLES.USER);
   const [hash, setHash] = useState('');
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -45,17 +39,34 @@ export const DashboardStaff = () => {
 
 
   useEffect(() => {
-    fetch(`${config.backend}/business/users`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch(`${config.backend}/business/users`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        if (!response.ok) {
+          // Si el backend devuelve error, lo capturamos aquí
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+
         setStaff(data.filter(u => u.id !== user.id));
+      } catch (error) {
+        console.error("Error al obtener los usuarios:", error);
+        // Acá podrías setear un estado de error para mostrar en el UI
+        setError("No se pudieron cargar los usuarios.");
+      } finally {
         setLoading(false);
-      })
+      }
+    };
+
+    fetchUsers();
   }, []);
+
 
 
 
@@ -88,17 +99,14 @@ export const DashboardStaff = () => {
     }
     finally {
       setActionLoading(false);
+      handleCancel();
     }
   }
 
   const handleCancel = () => {
     setName("");
     setEmail("");
-    setRole("USER");
-  }
-
-  const handleSubmit = async () => {
-
+    setRole(ROLES.USER);
   }
 
   const handleToggleUser = (userId) => {
@@ -122,6 +130,10 @@ export const DashboardStaff = () => {
     return false;
   }
 
+  const filteredStaff = staff.filter(user =>
+    user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    user.email.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className='relative overflow-hidden'>
@@ -148,6 +160,7 @@ export const DashboardStaff = () => {
                 triggerClass='btn-main flex text-tiny! gap-2'
                 triggerIcon={<Plus />}
                 triggerClick={() => setHash(generatePassword(6))}
+                buttonClass='btn-main w-24!'
                 canSave={validateInputs()}
                 loading={actionLoading}
               >
@@ -164,7 +177,7 @@ export const DashboardStaff = () => {
                 <div className='mb-6'>
                   <SimpleInput
                     label="Correo electrónico"
-                    placeholder="Ingresa tu nueva dirección"
+                    placeholder="Ingresa el correo electrónico"
                     className="mb-4"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -175,16 +188,18 @@ export const DashboardStaff = () => {
                   <label className="font-medium text-base text-slate-800 mb-1 block">Rol</label>
                   <GuiSelect
                     value={role}
-                    placeholder={RoleType[role][0] ?? 'Selecciona un tipo'}
+                    placeholder={ROLE_INFO[role]?.[0] ?? 'Selecciona un tipo'}
                     onChange={(e) => setRole(e)}
                     className="mb-4"
                   >
-                    {Object.entries(RoleType).map(([key, [label]]) => (
+                    {Object.entries(ROLE_INFO).map(([key, [label]]) => (
                       <GuiOption key={key} value={key}>{label}</GuiOption>
                     ))}
 
                   </GuiSelect>
-                  <p className='px-1 text-sm text-neutral-600 leading-snug'>{RoleType[role][1] || 's'}</p>
+                  <p className='px-1 text-sm text-neutral-600 leading-snug'>
+                    {ROLE_INFO[role]?.[1] || ''}
+                  </p>
                 </div>
 
                 <div className='mb-6'>
@@ -245,17 +260,19 @@ export const DashboardStaff = () => {
                     type="text"
                     id="table-search-users"
                     className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-0"
-                    placeholder="Search for users"
+                    placeholder="Buscar usuario"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                   />
                 </div>
               </div>
 
-              <table className="w-full text-sm text-left text-gray-500">
+              <table className="w-full text-sm text-left text-gray-500 table-fixed">
+
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                   <tr>
-                    <th className="p-4">
+                    <th className="w-[50px]  p-4">
                       <div className="flex items-center">
-                        {/* Puedes implementar el "select all" si lo deseas */}
                         <input
                           id="checkbox-all-search"
                           type="checkbox"
@@ -269,21 +286,29 @@ export const DashboardStaff = () => {
                         <label htmlFor="checkbox-all-search" className="sr-only">Select all</label>
                       </div>
                     </th>
-                    <th className="px-6 py-3">Nombre</th>
-                    <th className="px-6 py-3">Función</th>
-                    <th className="px-6 py-3">Status</th>
-                    <th className="px-6 py-3">Acción</th>
+                    <th className="w-8/16 px-6 py-3">Nombre</th>
+                    <th className="w-3/16 px-6 py-3">Función</th>
+                    <th className="w-3/16 px-6 py-3">Status</th>
+                    <th className="w-3/16 px-6 py-3">Acción</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {staff.length > 0 && staff.map(user => (
-                    <UserRow
-                      key={user.id}
-                      user={user}
-                      isChecked={isSelected(user.id)}
-                      onToggle={() => handleToggleUser(user.id)}
-                    />
-                  ))}
+                  {filteredStaff.length > 0 ? (
+                    filteredStaff.map(user => (
+                      <UserRow
+                        key={user.id}
+                        user={user}
+                        isChecked={isSelected(user.id)}
+                        onToggle={() => handleToggleUser(user.id)}
+                      />
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan="5" className="text-center py-8 text-gray-500">
+                        No se encontraron resultados.
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
 
@@ -323,7 +348,7 @@ const UserRow = ({ user, isChecked, onToggle }) => (
         <div className="font-normal text-gray-500">{user.email}</div>
       </div>
     </th>
-    <td className="px-6 py-4">{RoleType[user.role][0] || "???"}</td>
+    <td className="px-6 py-4">{ROLE_INFO[user.role]?.[0] || "???"}</td>
     <td className="px-6 py-4">
       <div className="flex items-center">
         <div className="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>
