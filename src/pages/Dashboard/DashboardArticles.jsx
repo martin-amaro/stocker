@@ -249,6 +249,7 @@ export const DashboardArticles = ({title = "Dashboard"}) => {
                     value={articleForm.codigo}
                     onChange={(e) => handleArticleFormChange('codigo', e.target.value)}
                     placeholder="Ej: ART001"
+                    inputClass='w-full!'
                   />
                   
                   <SimpleInput
@@ -258,6 +259,7 @@ export const DashboardArticles = ({title = "Dashboard"}) => {
                     value={articleForm.nombre}
                     onChange={(e) => handleArticleFormChange('nombre', e.target.value)}
                     placeholder="Nombre del producto"
+                    inputClass='w-full!'
                   />
 
                   <div>
@@ -282,6 +284,7 @@ export const DashboardArticles = ({title = "Dashboard"}) => {
                       value={articleForm.precio}
                       onChange={(e) => handleArticleFormChange('precio', e.target.value)}
                       placeholder="0.00"
+                      inputClass='w-full!'
                     />
                     
                     <SimpleInput
@@ -291,6 +294,7 @@ export const DashboardArticles = ({title = "Dashboard"}) => {
                       value={articleForm.stock}
                       onChange={(e) => handleArticleFormChange('stock', e.target.value)}
                       placeholder="0"
+                      inputClass='w-full!'
                     />
                   </div>
 
@@ -301,6 +305,7 @@ export const DashboardArticles = ({title = "Dashboard"}) => {
                     value={articleForm.proveedor}
                     onChange={(e) => handleArticleFormChange('proveedor', e.target.value)}
                     placeholder="Nombre del proveedor"
+                    inputClass='w-full!'
                   />
 
                   <div>

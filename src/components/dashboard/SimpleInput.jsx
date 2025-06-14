@@ -1,7 +1,7 @@
 import React from 'react'
 import { ErrorMessage } from '../auth/ErrorMessage'
 
-export const SimpleInput = ({ label, name, type, className="", onChange=()=>{}, disabled=false, placeholder="", error="", readOnly=false, value="", autoComplete='on'}) => {
+export const SimpleInput = ({ label, name, type, className="", inputClass="", onChange=()=>{}, disabled=false, placeholder="", error="", readOnly=false, value="", autoComplete='on'}) => {
   return (
     <div className={className ? className : ''}>
       {label && <label className="font-medium text-base text-slate-800 mb-1 block">{label}</label>}
@@ -11,7 +11,7 @@ export const SimpleInput = ({ label, name, type, className="", onChange=()=>{}, 
         value={value}
         onChange={onChange}
         disabled={disabled}
-        className={"text-slate-900 bg-white border border-slate-300 w-full middle:w-sm text-sm p-2 mt-1 rounded-md outline-blue-500" +
+        className={"text-slate-900 bg-white border border-slate-300 w-full middle:w-sm text-sm p-2 mt-1 rounded-md outline-blue-500 " + inputClass +
           (readOnly ? ' cursor-default outline-0 border-transparent text-neutral-500!' : ' focus:outline-blue-500 ') +
           (error ? ' border-red-500! focus:border-red-500! bg-slate-300' : '')
         }
