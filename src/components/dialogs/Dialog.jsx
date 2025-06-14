@@ -68,7 +68,10 @@ export const Dialog = ({
             <div className="px-6 py-4">
 
               {children}
-              {typeof canSave === "string" && <ErrorMessage className="mt-3" message={canSave} /> }
+              <div className=''>
+                {typeof canSave === "string" && <ErrorMessage className="font-medium p-3 bg-red-50 rounded-md mt-2" message={canSave} /> }
+
+              </div>
             </div>
 
             {showActions && (
