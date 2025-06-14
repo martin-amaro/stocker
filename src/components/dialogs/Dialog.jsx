@@ -72,7 +72,7 @@ export const Dialog = ({
                 </Diag.Close> */}
 
 
-                <Diag.Close
+                <Diag.Close 
                   onClick={handleSave}
                   className="btn-main m-0! rounded-md! shadow-none!"
                   disabled={canSave ? true : false}

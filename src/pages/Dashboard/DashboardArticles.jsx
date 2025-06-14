@@ -1,69 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Package, Settings, Plus, Save, Search, Filter } from 'lucide-react';
+import { DashHeader } from './../../components/dashboard/DashHeader';
+import { DashTitle } from './../../components/dashboard/DashTitle';
 
-// Muestra un encabezado con título y subtítulo.
-export const DashHeader = ({title, subtitle}) => {
-  return (
-    <div className="w-full py-4 px-6 bg-blue-50 text-blue-600 font-semibold text-sm border-b border-blue-100">
-      <div className="font-semibold">{title}</div>
-      {subtitle && <div className="text-xs text-blue-500 mt-1">{subtitle}</div>}
-    </div>
-  )
-}
- 
-// Muestra un título grande y un texto secundario.
-export const DashTitle = ({title, children}) => {
-  return (
-    <>
-      <h1 className="text-2xl font-semibold text-gray-800">{title}</h1>
-      <p className="text-gray-600 mt-2">{children}</p>
-   </>
-  )
-}
-
- //Un input reutilizable con etiqueta, validación y estilos.
-export const SimpleInput = ({ label, name, type, onChange, disabled, placeholder, error, readOnly, value, autoComplete='on'}) => {
-  return (
-    <div>
-      {label && <label className="font-medium text-base text-slate-800 mb-1 block">{label}</label>}
-      <input
-        name={name}
-        type={type}
-        value={value}
-        onChange={onChange}
-        disabled={disabled}
-        className={"text-slate-900 bg-white border border-slate-300 w-full text-sm p-2 mt-1 rounded-md outline-blue-500" +
-          (readOnly ? ' cursor-default outline-0 border-transparent text-neutral-500' : ' focus:outline-blue-500 ') +
-          (error ? ' border-red-500 focus:border-red-500 bg-slate-300' : '')
-        }
-        readOnly={readOnly}
-        placeholder={placeholder}
-        spellCheck="false"
-        autoComplete={autoComplete}
-      />
-      {error && <div className="text-red-500 text-sm mt-1">{error}</div>}
-    </div>
-  )
-}
-
-// Muestra un mensaje flotante de éxito o error en la parte superior.
-export const TopMessage = ({ message, type = 'success', duration = 3000, onClose }) => {
-  const [visible, setVisible] = useState(!!message);
-
-  useEffect(() => {
-    if (!message) return;
-
-    setVisible(true);
-
-    const timer = setTimeout(() => {
-      setVisible(false);
-      if (onClose) onClose();
-    }, duration);
-
-    return () => clearTimeout(timer);
-  }, [message, duration, onClose]);
-
-  if (!visible) return null;
 
   return (
     <div className='fixed top-0 left-0 right-0 z-50 animate-pulse shadow-md'>

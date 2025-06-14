@@ -25,7 +25,7 @@ export const Dashboard = () => {
                                 Aún no has completado los datos de tu negocio.
                             </div>
                             <div>
-                                <Link to="/dashboard/business" className='btn-secondary'>Completar</Link>
+                                <Link to="/dashboard/business" className='btn-secondary border border-gray-600'>Completar</Link>
                             </div>
                         </div>
                     )}
