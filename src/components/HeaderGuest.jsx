@@ -33,11 +33,11 @@ export const HeaderGuest = ({ simple = false }) => {
                     {!simple && (
                         <nav className="hidden lg:block">
                             <ul className='flex gap-4 font-medium text-gray-300'>
-                                <li> <a className="header-link" href="#" >Restaurantes</a> </li>
-                                <li> <a className="header-link" href="#" >Retail</a> </li>
-                                <li> <a className="header-link" href="#" >Belleza</a> </li>
+                                <li> <Link className="header-link" to="/restaurantes">Restaurantes</Link> </li>
+                                <li> <Link className="header-link" to="/retail">Retail</Link> </li>
+                                <li> <Link className="header-link" to="/belleza">Belleza</Link> </li>
                                 <li> <a className="header-link" href="#" >Servicios</a> </li>
-                                <li> <a className="header-link" href="#" >Planes</a> </li>
+                                <li> <Link className="header-link" to="/pricing">Planes</Link> </li>
                             </ul>
                         </nav>
                     )}
