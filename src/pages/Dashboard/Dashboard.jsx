@@ -3,6 +3,8 @@ import { Panel } from '../../components/dashboard/Panel';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import {  MessageSquareWarning, TriangleAlert } from 'lucide-react';
+import { hasRole } from '../../utils/roleUtils';
+import { ROLES } from '../../constants/roles';
 
 
 export const Dashboard = () => {
@@ -18,7 +20,7 @@ export const Dashboard = () => {
                 <Panel />
 
                 <main className="mt-14 middle:mt-0 overflow-y-auto relative">
-                    {!user.business?.name && location.pathname !== '/dashboard/business' && (
+                    {hasRole(user, ROLES.ADMIN) && !user.business?.name && location.pathname !== '/dashboard/business' && (
                         <div className='w-full p-4 bg-yellow-50 text-tiny font-medium text-neutral-900 flex justify-between items-center'>
                             <div className='gap-3 flex items-center'>
                                 <TriangleAlert />

@@ -6,6 +6,8 @@ import config from '../../config';
 import { ProfileButton } from './ProfileButton';
 import { MenuBurger } from '../MenuBurger';
 import { useAuth } from '../../context/AuthContext';
+import { ROLES } from './../../constants/roles';
+import { hasRole } from './../../utils/roleUtils';
 
 
 
@@ -25,6 +27,7 @@ const PanelItem = ({ icon, label, active = false, path = false, className = "", 
 
 const PanesItemList = ({mobile = false, onItemClick = () => {}}) => {
     const location = useLocation();
+    const { user } = useAuth();
 
     return (
         <>
@@ -73,15 +76,17 @@ const PanesItemList = ({mobile = false, onItemClick = () => {}}) => {
                 headerLink={mobile}
                 onClick={onItemClick}
             />
-
-            <PanelItem
-                icon={<UsersRound className='w-5 h-5' />}
-                label="Personal"
-                path="/dashboard/staff"
-                active={location.pathname === '/dashboard/staff'}
-                headerLink={mobile}
-                onClick={onItemClick}
-            />
+            
+            {hasRole(user, ROLES.ADMIN, ROLES.MOD) && (
+                <PanelItem
+                    icon={<UsersRound className='w-5 h-5' />}
+                    label="Personal"
+                    path="/dashboard/staff"
+                    active={location.pathname === '/dashboard/staff'}
+                    headerLink={mobile}
+                    onClick={onItemClick}
+                />
+            )}
 
             <hr className={ !mobile ? 'border-t-neutral-200 mt-0 my-4' : 'hidden'} />
 
@@ -115,6 +120,7 @@ export const Panel = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
+    
 
     const [menuOpen, setMenuOpen] = useState(false);
     const urlQuery = searchParams.get('query');

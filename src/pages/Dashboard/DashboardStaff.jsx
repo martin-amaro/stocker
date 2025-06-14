@@ -45,17 +45,34 @@ export const DashboardStaff = () => {
 
 
   useEffect(() => {
-    fetch(`${config.backend}/business/users`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch(`${config.backend}/business/users`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        if (!response.ok) {
+          // Si el backend devuelve error, lo capturamos aquí
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+
         setStaff(data.filter(u => u.id !== user.id));
+      } catch (error) {
+        console.error("Error al obtener los usuarios:", error);
+        // Acá podrías setear un estado de error para mostrar en el UI
+        setError("No se pudieron cargar los usuarios.");
+      } finally {
         setLoading(false);
-      })
+      }
+    };
+
+    fetchUsers();
   }, []);
+
 
 
 
@@ -88,6 +105,7 @@ export const DashboardStaff = () => {
     }
     finally {
       setActionLoading(false);
+      handleCancel();
     }
   }
 
@@ -95,10 +113,6 @@ export const DashboardStaff = () => {
     setName("");
     setEmail("");
     setRole("USER");
-  }
-
-  const handleSubmit = async () => {
-
   }
 
   const handleToggleUser = (userId) => {
@@ -148,6 +162,7 @@ export const DashboardStaff = () => {
                 triggerClass='btn-main flex text-tiny! gap-2'
                 triggerIcon={<Plus />}
                 triggerClick={() => setHash(generatePassword(6))}
+                buttonClass='btn-main w-24!'
                 canSave={validateInputs()}
                 loading={actionLoading}
               >
@@ -164,7 +179,7 @@ export const DashboardStaff = () => {
                 <div className='mb-6'>
                   <SimpleInput
                     label="Correo electrónico"
-                    placeholder="Ingresa tu nueva dirección"
+                    placeholder="Ingresa el correo electrónico"
                     className="mb-4"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}

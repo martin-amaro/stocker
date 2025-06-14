@@ -13,6 +13,8 @@ import { ButtonMain } from '../../components/gui/ButtonMain';
 import { useAuth } from '../../context/AuthContext';
 import axios from 'axios';
 import config from '../../config';
+import { hasRole } from '../../utils/roleUtils';
+import { ROLES } from '../../constants/roles';
 
 const BusinessType = {
   1: ['Restaurante', <ChefHat size={20} />],
@@ -79,7 +81,7 @@ export const DashboardBusiness = () => {
 
       if (response.status === 200) {
         const updatedBusiness = response.data;
-        
+
 
         setBusinessName(updatedBusiness.name);
         setBusinessType(updatedBusiness.industry);
@@ -122,7 +124,7 @@ export const DashboardBusiness = () => {
       <DashHeader title="Mi negocio" />
       <div className="p-8 max-w-2xl">
         <DashTitle title="Acerca de">
-          Aquí puedes configurar tu negocio.
+          {hasRole(user, ROLES.ADMIN) && ("Aquí puedes configurar tu negocio.")}
         </DashTitle>
 
         {success && <TopMessage message={success} type="success" onClose={() => setSuccess('')} />}
@@ -135,27 +137,29 @@ export const DashboardBusiness = () => {
             <p className="text-slate-500 font-medium w-full middle:w-sm text-sm py-2 mt-1 rounded-md">{businessName || "Sin especificar"}</p>
           </div>
           <div className="mt-4 middle:mt-0 middle:ml-4 whitespace-nowrap gap-4 flex">
-            <Dialog
-              title="Editar nombre del negocio"
-              onSave={() => {
-                setBusinessName(newBusinessName);
-                setHasChanges(true);
-                return true;
-              }}
-              onCancel={() => setNewBusinessName(businessName)}
-              triggerText='Cambiar'
-              triggerClass='btn-text'
-              canSave={validateInput(newBusinessName, businessName)}
-            >
+            {hasRole(user, ROLES.ADMIN) && (
+              <Dialog
+                title="Editar nombre del negocio"
+                onSave={() => {
+                  setBusinessName(newBusinessName);
+                  setHasChanges(true);
+                  return true;
+                }}
+                onCancel={() => setNewBusinessName(businessName)}
+                triggerText='Cambiar'
+                triggerClass='btn-text'
+                canSave={validateInput(newBusinessName, businessName)}
+              >
 
-              <SimpleInput
-                label="Nombre comercial"
-                placeholder="Ingresa tu nuevo nombre"
-                value={newBusinessName}
-                onChange={(e) => setNewBusinessName(e.target.value)}
-              />
+                <SimpleInput
+                  label="Nombre comercial"
+                  placeholder="Ingresa tu nuevo nombre"
+                  value={newBusinessName}
+                  onChange={(e) => setNewBusinessName(e.target.value)}
+                />
 
-            </Dialog>
+              </Dialog>
+            )}
           </div>
         </div>
 
@@ -169,30 +173,32 @@ export const DashboardBusiness = () => {
             </div>
           </div>
           <div className="mt-4 middle:mt-0 middle:ml-4 whitespace-nowrap gap-4 flex">
-            <Dialog
-              title="Editar tipo de negocio"
-              onSave={() => {
-                setBusinessType(newBusinessType)
-                setHasChanges(true);
-              }}
-              onCancel={() => setNewBusinessType(businessType)}
-              triggerText='Cambiar'
-              triggerClass='btn-text'
-              canSave={businessType !== newBusinessType ? false : true}
-            >
-              <p className='text-tiny text-neutral-800 mb-4'>El tipo de negocio puede activar o desactivar algunas características. Escoge el que más se adapte a ti.</p>
-              <GuiSelect
-                placeholder={BusinessType[businessType][0] ?? 'Selecciona un tipo'}
-                value={newBusinessType}
-                onChange={(e) => setNewBusinessType(e)}
+            {hasRole(user, ROLES.ADMIN) && (
+              <Dialog
+                title="Editar tipo de negocio"
+                onSave={() => {
+                  setBusinessType(newBusinessType)
+                  setHasChanges(true);
+                }}
+                onCancel={() => setNewBusinessType(businessType)}
+                triggerText='Cambiar'
+                triggerClass='btn-text'
+                canSave={businessType !== newBusinessType ? false : true}
               >
-                {Object.entries(BusinessType).map(([key, [label, icon]]) => (
-                  <GuiOption key={key} value={key}>
-                    {icon} {label}
-                  </GuiOption>
-                ))}
-              </GuiSelect>
-            </Dialog>
+                <p className='text-tiny text-neutral-800 mb-4'>El tipo de negocio puede activar o desactivar algunas características. Escoge el que más se adapte a ti.</p>
+                <GuiSelect
+                  placeholder={BusinessType[businessType][0] ?? 'Selecciona un tipo'}
+                  value={newBusinessType}
+                  onChange={(e) => setNewBusinessType(e)}
+                >
+                  {Object.entries(BusinessType).map(([key, [label, icon]]) => (
+                    <GuiOption key={key} value={key}>
+                      {icon} {label}
+                    </GuiOption>
+                  ))}
+                </GuiSelect>
+              </Dialog>
+            )}
           </div>
         </div>
 
@@ -203,25 +209,27 @@ export const DashboardBusiness = () => {
             <p className="text-slate-500 font-medium w-full middle:w-sm text-sm py-2 mt-1 rounded-md">{address || "Sin especificar"}</p>
           </div>
           <div className="mt-4 middle:mt-0 middle:ml-4 whitespace-nowrap gap-4 flex">
-            <Dialog
-              title="Editar dirección del negocio"
-              onSave={() => {
-                setHasChanges(true);
-                setAddress(newAddress);
-                return true;
-              }}
-              onCancel={() => setNewAddress(address)}
-              triggerText='Cambiar'
-              triggerClass='btn-text'
-              canSave={validateInput(newAddress, address)}
-            >
-              <SimpleInput
-                label="Dirección comercial"
-                placeholder="Ingresa tu nueva dirección"
-                value={newAddress}
-                onChange={(e) => setNewAddress(e.target.value)}
-              />
-            </Dialog>
+            {hasRole(user, ROLES.ADMIN) && (
+              <Dialog
+                title="Editar dirección del negocio"
+                onSave={() => {
+                  setHasChanges(true);
+                  setAddress(newAddress);
+                  return true;
+                }}
+                onCancel={() => setNewAddress(address)}
+                triggerText='Cambiar'
+                triggerClass='btn-text'
+                canSave={validateInput(newAddress, address)}
+              >
+                <SimpleInput
+                  label="Dirección comercial"
+                  placeholder="Ingresa tu nueva dirección"
+                  value={newAddress}
+                  onChange={(e) => setNewAddress(e.target.value)}
+                />
+              </Dialog>
+            )}
           </div>
         </div>
 
